@@ -15,10 +15,7 @@ echo ln -s $SOURCE_DIR/zsh/zshrc-${MACHINE} $DOTFILES/.zshrc
 ln -s $SOURCE_DIR/zsh/zshrc-${MACHINE} $DOTFILES/.zshrc
 
 echo ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE} $DOTFILES/.zsh-custom
-ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE} $DOTFILES/.zsh-custom
-
-echo ln -s $SOURCE_DIR/tmux $DOTFILES/.tmux
-ln -s $SOURCE_DIR/tmux $DOTFILES/.tmux
+ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE}.sh $DOTFILES/.zsh-custom
 
 echo ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
