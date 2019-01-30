@@ -2,6 +2,9 @@ if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.vimrc
   rm -rf $DOTFILES/.vim
   rm -rf $DOTFILES/.clang-format
+  if [ -f $DOTFILES/.launch-zsh.sh ]; then
+    rm -rf $DOTFILES/.launch-zsh.sh
+  fi
   exit 0
 fi
 
