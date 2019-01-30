@@ -23,7 +23,7 @@ if [ ${MACHINE} = "linux" -a ${USER} = "cdaq" ]; then
   MACHINE=cdaq
   export DOTFILES=${DOTFILES_CDAQ}
 fi
-if [ ${MACHINE} = "linux" -a -f /group/jpsi-007 ]; then
+if [ ${MACHINE} = "linux" -a -f /site/12gev_phys/jlab.sh ]; then
   MACHINE=jlab
 fi
 export MACHINE
