@@ -1,3 +1,6 @@
+echo "NOT IMPLEMENTED YET"
+exit 1
+
 if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.bashrc
   rm -rf $DOTFILES/.bash_aliases
