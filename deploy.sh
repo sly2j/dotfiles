@@ -4,7 +4,6 @@ COMMAND=$1
 export DOTFILES="$HOME"  ## default dotfiles, will be altered for know systems if needed
 export DOTFILES_CDAQ="$HOME/sjjooste/.dotfiles"
 export SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-export SOURCE_DIR="${SOURCE_DIR}/.."
 
 ## detect system
 UNAME="$(uname -s)"
@@ -48,7 +47,7 @@ echo "Ensuring all submodules are initialized"
 git submodule init
 git submodule update --init --recursive
 
-echo "Executing main command: bash $SOURCE_DIR/scripts/detail/${COMMAND}.sh ${@:2}"
+echo "Executing main command: bash $SOURCE_DIR/scripts/${COMMAND}.sh ${@:2}"
 env MACHINE=${MACHINE} DOTFILES=${DOTFILES} SOURCE_DIR=${SOURCE_DIR} \
   bash $SOURCE_DIR/scripts/detail/${COMMAND}.sh ${@:2}
 
