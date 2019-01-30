@@ -36,6 +36,12 @@ ln -s $SOURCE_DIR/vim/clang-format-dotfile $DOTFILES/.clang-format
 if [ ${MACHINE} = "cdaq" -o ${MACHINE} = "jlab" ]; then
   echo "REMOVING YouCompleteMe Plugin for machine: ${MACHINE}"
   rm $DOTFILES/.vim/bundle/YouCompleteMe
+  if [ -f $HOME/.clang-format ]; then
+    echo "$HOME/.clang-format already found"
+  else
+    echo ln -s $DOTFILES/.clang-format $HOME/.clang-format
+    ln -s $DOTFILES/.clang-format $HOME/.clang-format
+  fi
 else
   echo "BUILDING YouCompleteMe Plugin for machine ${MACHINE}"
   cd $DOTFILES/.vim/bundle/YouCompleteMe
