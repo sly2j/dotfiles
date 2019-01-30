@@ -36,7 +36,6 @@ alias root='root -b'
 #alias cppcompile='g++ -std=c++17 -stdlib=libc++'
 #alias g='git'
 
-export VIM_RUNTIME=$DOTFILES/.vim
 alias vim="vim -u $DOTFILES/.vimrc"
 
 alias tmux="TERM=screen-256color tmux -L sly -f $DOTFILES/.tmux.conf"

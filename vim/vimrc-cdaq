@@ -6,7 +6,7 @@ let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME,
 let s:portable = expand('<sfile>:p:h')
 
 " add the directory to 'runtimepath'
-let &runtimepath = printf('%s/vim,%s,%s/vim/plugins', s:portable, &runtimepath, s:portable)
+let &runtimepath = printf('%s/.vim,%s,%s/.vim/plugins', s:portable, &runtimepath, s:portable)
 
 " ------------------------------------------------------------------------------
 " Use pathogen for easier vim plugins
