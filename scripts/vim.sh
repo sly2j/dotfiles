@@ -39,8 +39,8 @@ if [ ${MACHINE} = "cdaq" -o ${MACHINE} = "jlab" ]; then
   if [ -f $HOME/.clang-format ]; then
     echo "$HOME/.clang-format already found"
   else
-    echo ln -s $DOTFILES/.clang-format $HOME/.clang-format
-    ln -s $DOTFILES/.clang-format $HOME/.clang-format
+    echo cp $SOURCE_DIR/vim/clang-format-dotfile $HOME/.clang-format
+    cp $SOURCE_DIR/vim/clang-format-dotfile $HOME/.clang-format
   fi
 else
   echo "BUILDING YouCompleteMe Plugin for machine ${MACHINE}"
