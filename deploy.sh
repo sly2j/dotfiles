@@ -8,7 +8,7 @@ export SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && p
 ## detect system
 UNAME="$(uname -s)"
 case "${UNAME}" in
-  linux*)  MACHINE=linux;;
+  Linux*)  MACHINE=linux;;
   Darwin*) MACHINE=macos;;
   *)       MACHINE="UNKNOWN"
 esac
