@@ -1,4 +1,4 @@
-if [[ $i == "cleanup" ]]; then
+if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.bashrc
   rm -rf $DOTFILES/.bash_aliases
   exit 0

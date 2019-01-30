@@ -1,4 +1,4 @@
-if [[ $i == "cleanup" ]]; then
+if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.tmux.conf
   $DOTFILES/.tmux
   exit 0

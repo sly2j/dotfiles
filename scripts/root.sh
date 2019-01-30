@@ -1,4 +1,4 @@
-if [[ $i == "cleanup" ]]; then
+if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.rootlogon.C
   rm -rf $DOTFILES/.rootstyle.C
   exit 0

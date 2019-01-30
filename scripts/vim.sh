@@ -1,12 +1,12 @@
-if [[ $i == "cleanup" ]]; then
+if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.vimrc
   rm -rf $DOTFILES/.vim
-  rm -rf $DOTFILES/.clean-format
+  rm -rf $DOTFILES/.clang-format
   exit 0
 fi
 
 if [ -f $DOTFILES/.vim -o -f $DOTFILES/.vimrc -o -f $DOTFILES/.clang-format ]; then
-  echo "ERROR: tmux already configured on this system"
+  echo "ERROR: vim already configured on this system"
   echo "       Please run cleanup first"
   exit 1
 fi
@@ -14,11 +14,11 @@ fi
 echo mkdir $DOTFILES/.vim
 mkdir $DOTFILES/.vim
 for i in $SOURCE_DIR/vim/*; do
-  echo -s $i $DOTFILES/.vim/
+  echo ln -s $i $DOTFILES/.vim/
   ln -s $i $DOTFILES/.vim/
 done
 echo rm $DOTFILES/.vim/bundle $DOTFILES/vimrc-*
-rm $DOTFILES/.vim/bundle $DOTFILES/vimrc-*
+rm $DOTFILES/.vim/bundle $DOTFILES/.vim/vimrc-*
 echo mkdir $DOTFILES/.vim/bundle
 mkdir $DOTFILES/.vim/bundle
 for i in $SOURCE_DIR/vim/bundle/*; do

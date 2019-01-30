@@ -1,4 +1,4 @@
-if [[ $i == "cleanup" ]]; then
+if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.zshrc
   rm -rf $DOTFILES/.zsh-custom
   rm -rf $DOTFILES/.oh-my-zsh
@@ -22,3 +22,8 @@ ln -s $SOURCE_DIR/tmux $DOTFILES/.tmux
 
 echo ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
+
+if [ ${MACHINE} = "cdaq" ]; then
+  echo ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
+  ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
+fi
