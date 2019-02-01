@@ -56,7 +56,8 @@ autocmd FileType make set noexpandtab shiftwidth=8
 let g:tex_flavor = "latex"             " TeX is LaTeX
 
 " Mac Vim font for retina display
-set guifont=Menlo\ Regular:h12
+"set guifont=Menlo\ Regular:h12
+set guifont=Meslo\ Lg\ S\ Regular\ for\ Powerline:h13 
 
 " ------------------------------------------------------------------------------
 " clang-format
@@ -104,6 +105,11 @@ let g:ycm_enable_diagnostic_highlighting = 0
 
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
+
+" ------------------------------------------------------------------------------
+" AIRLINE
+" ------------------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
 
 " close vim if only open window is the NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

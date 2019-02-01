@@ -6,7 +6,7 @@
 # don't execute PATH modifications for tmux 
 # (this will screw up module command)
 if [[ -z $TMUX ]]; then
-  export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+  export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
   export PATH=/Applications/MacVim.app/Contents/bin:$PATH
 fi # TMUX GUARD
 
