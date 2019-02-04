@@ -39,7 +39,7 @@ set ruler
 set stal=1                    " show cursor postion
 set history=50                " remember 50 commands
 set bs=2                      " free backspacing in insert mode
-"set visualbell                " NO beeping
+set visualbell                " NO beeping
 set wrap                      " wrap long lines, else "set nowrap
 set linebreak                 " don't break words in wrap mode
 set nocompatible              " vim defaults
