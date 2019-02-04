@@ -1,6 +1,22 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# ------------------------------------------------------------------------------
+# PATH
+# ------------------------------------------------------------------------------
+# Add commonly used folders to $PATH
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# ==============================================================================
+# Environment modules
+# ==============================================================================
+source /etc/profile.d/modules.sh
+
+if [ -f /group/jpsi-007/local/setup.sh ]; then
+source /group/jpsi-007/local/setup.sh
+source /group/jpsi-007/local/pro.sh
+fi
+
 # ==============================================================================
 # OH-MY-ZSH
 # ==============================================================================
