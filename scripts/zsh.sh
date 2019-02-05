@@ -24,3 +24,11 @@ if [ ${MACHINE} = "cdaq" ]; then
   echo ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
   ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
 fi
+
+#checkout powerline9k theme
+if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerline9k ]; then
+  echo "powerline9k theme already installed"
+else
+  echo "Grabbing powerline9k theme"
+  git clone https://github.com/bhilburn/powerlevel9k.git $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerlevel9k
+fi
