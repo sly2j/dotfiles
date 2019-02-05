@@ -105,12 +105,12 @@ endif
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 
+" close vim if only open window is the NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " ------------------------------------------------------------------------------
 " AIRLINE
 " ------------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
-
-" close vim if only open window is the NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ------------------------------------------------------------------------------
