@@ -75,19 +75,8 @@ alias mux_runinfod="tmux -u -L replay attach-session -t runinfod"
 # ------------------------------------------------------------------------------
 # Fix display environment for tmux (preexec: runs before every command)
 # ------------------------------------------------------------------------------
-# if we are not in screen/tmux: update display cache
-# if we are in screen/tmux: update the value of DISPLAY from the cache
-#function update-x11-forwarding() {
-#  if [ -z "$STY" -a -z "$TMUX" ]; then
-#    echo $DISPLAY > $DOTFILES/.display.txt
-#  else
-#    export DISPLAY=`cat $DOTFILES/.display.txt`
-#  fi
-#}
-#update-x11-forwarding
 if [ -n "$TMUX" ]; then
   function refresh {
-#    export $(tmux -L sly show-environment | grep "^SSH_AUTH_SOCK")
     export $(tmux -L sly show-environment | grep "^DISPLAY")
   }
 else
@@ -96,3 +85,27 @@ fi
 function preexec {
   refresh
 }
+
+## zsh highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_STYLES[default]=none
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green
+ZSH_HIGHLIGHT_STYLES[alias]=none
+ZSH_HIGHLIGHT_STYLES[builtin]=none
+ZSH_HIGHLIGHT_STYLES[function]=none
+ZSH_HIGHLIGHT_STYLES[command]=none
+ZSH_HIGHLIGHT_STYLES[precommand]=none
+ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+ZSH_HIGHLIGHT_STYLES[hashed-command]=none
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[globbing]=none
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=blue
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=yellow
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=yellow
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
+ZSH_HIGHLIGHT_STYLES[assign]=none

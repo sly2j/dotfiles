@@ -57,7 +57,7 @@ let g:tex_flavor = "latex"             " TeX is LaTeX
 
 " Mac Vim font for retina display
 "set guifont=Menlo\ Regular:h12
-set guifont=Meslo\ Lg\ S\ Regular\ for\ Powerline:h13 
+set guifont=Meslo\ Lg\ S\ Regular\ for\ Powerline:h14
 
 " ------------------------------------------------------------------------------
 " clang-format

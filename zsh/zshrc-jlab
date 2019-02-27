@@ -56,7 +56,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  colored-man colorize pip python zsh-syntax-highlighting tmux
+  colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
 )
   #git colored-man colorize pip python zsh-syntax-highlighting tmux
   

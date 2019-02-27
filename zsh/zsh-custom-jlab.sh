@@ -19,5 +19,31 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # ALIASES
 # ------------------------------------------------------------------------------
 alias root='root -b'
+alias ltmux="tmux -u list-sessions"
+alias atmux="tmux -u attach-session -t"
 #alias cppcompile='g++ -std=c++17 -stdlib=libc++'
 #alias g='git'
+function rootls() {
+  module load python
+  `root-config --bindir`/rootls $@
+  module unload python
+}
+function rootbrowse() {
+  module load python
+  `root-config --bindir`/rootbrowse $@
+  module unload python
+}
+
+# ------------------------------------------------------------------------------
+# Fix display environment for tmux (preexec: runs before every command)
+# ------------------------------------------------------------------------------
+if [ -n "$TMUX" ]; then
+  function refresh {
+    export $(tmux -L sly show-environment | grep "^DISPLAY")
+  }
+else
+  function refresh { }
+fi
+function preexec {
+  refresh
+}
