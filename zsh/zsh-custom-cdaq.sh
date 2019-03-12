@@ -72,6 +72,9 @@ alias mux_whit='tmux -L whit attach-session -t 0'
 alias mux_default='tmux -L default attach-session -t http_web_display'
 alias mux_runinfod="tmux -u -L replay attach-session -t runinfod"
 
+## go to online browser
+alias go_monitor= '~/bin/Linux/firefox --new-window "cdaql1.jlab.org:8888" &'
+
 # ------------------------------------------------------------------------------
 # Fix display environment for tmux (preexec: runs before every command)
 # ------------------------------------------------------------------------------
@@ -109,3 +112,5 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[assign]=none
+#!/bin/bash
+
