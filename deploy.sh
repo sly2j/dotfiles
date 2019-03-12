@@ -19,6 +19,9 @@ if [ ${MACHINE} = "UNKNOWN" ]; then
 fi
 
 ## special known systems
+if [ ${MACHINE} = "linux" -a ${HOSTNAME} = "agave.phy.anl.gov"]; then
+  MACHINE=phys
+fi
 if [ ${MACHINE} = "linux" -a ${USER} = "cdaq" ]; then
   MACHINE=cdaq
   export DOTFILES=${DOTFILES_CDAQ}
