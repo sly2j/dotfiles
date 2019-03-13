@@ -32,3 +32,15 @@ else
   echo "Grabbing powerline9k theme"
   git clone https://github.com/bhilburn/powerlevel9k.git $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerlevel9k
 fi
+if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+  echo "zsh-autosuggestions already installed"
+else
+  echo "grabbing zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $SOURCE_DIR/zsh/oh-my-zsh/plugins/zsh-autosuggestions
+fi
+if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+  echo "zsh-syntax-highlighting already installed"
+else
+  echo "grabbing zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $SOURCE_DIR/zsh/oh-my-zsh/plugins/zsh-syntax-highlighting
+fi
