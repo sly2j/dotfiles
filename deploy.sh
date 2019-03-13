@@ -19,17 +19,23 @@ if [ ${MACHINE} = "UNKNOWN" ]; then
 fi
 
 ## special known systems
-if [ ${MACHINE} = "linux" -a ${HOSTNAME} = "agave.phy.anl.gov" ]; then
-  MACHINE=phys
+if [ ${MACHINE} = "linux" ]; then
+  case "${HOSTNAME}" in
+    *phy.anl*)
+      MACHINE=phys
+      ;;
+    *lcrc*)
+      MACHINE=lcrc
+      ;;
+    *cdaq*)
+      MACHINE=cdaq
+      export DOTFILES=${DOTFILES_CDAQ}
+      ;;
+    *jlab*)
+      MACHINE=jlab
+      ;;
+  esac
 fi
-if [ ${MACHINE} = "linux" -a ${USER} = "cdaq" ]; then
-  MACHINE=cdaq
-  export DOTFILES=${DOTFILES_CDAQ}
-fi
-if [ ${MACHINE} = "linux" -a -f /site/12gev_phys/jlab.sh ]; then
-  MACHINE=jlab
-fi
-export MACHINE
 
 if [ -z $2 ]; then
   echo "Deploying ${COMMAND} on machine ${MACHINE}"
