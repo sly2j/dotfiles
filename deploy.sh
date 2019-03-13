@@ -19,7 +19,7 @@ if [ ${MACHINE} = "UNKNOWN" ]; then
 fi
 
 ## special known systems
-if [ ${MACHINE} = "linux" -a ${HOSTNAME} = "agave.phy.anl.gov"]; then
+if [ ${MACHINE} = "linux" -a ${HOSTNAME} = "agave.phy.anl.gov" ]; then
   MACHINE=phys
 fi
 if [ ${MACHINE} = "linux" -a ${USER} = "cdaq" ]; then
@@ -50,12 +50,6 @@ echo "Ensuring all submodules are initialized"
 git submodule init
 git submodule update --init --recursive
 
-if [ -z $ZSH_CUSTOM ]; then
-  export ZSH_CUSTOM=$DOTFILES/.oh-my-zsh/custom
-fi
-git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 echo "Executing main command: bash $SOURCE_DIR/scripts/${COMMAND}.sh ${@:2}"
 env MACHINE=${MACHINE} DOTFILES=${DOTFILES} SOURCE_DIR=${SOURCE_DIR} \
