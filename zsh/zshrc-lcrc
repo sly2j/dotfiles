@@ -5,11 +5,12 @@
 # PATH
 # ------------------------------------------------------------------------------
 # Add commonly used folders to $PATH
-export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # ==============================================================================
 # LOAD ENVIRONMENT MODULES HERE
 # ==============================================================================
-source /etc/profile.d/modules.sh
+module load tmux
+module load root
 
 # ==============================================================================
 # OH-MY-ZSH

@@ -27,6 +27,9 @@ if [ ${MACHINE} = "linux" ]; then
     *lcrc*)
       MACHINE=lcrc
       ;;
+    *bebop*)
+      MACHINE=lcrc
+      ;;
     *cdaq*)
       MACHINE=cdaq
       export DOTFILES=${DOTFILES_CDAQ}
