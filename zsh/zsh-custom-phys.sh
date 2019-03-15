@@ -28,7 +28,7 @@ alias atmux="tmux -u attach-session -t"
 # ------------------------------------------------------------------------------
 if [ -n "$TMUX" ]; then
   function refresh {
-    export $(tmux -L sly show-environment | grep "^DISPLAY")
+    export $(tmux show-environment | grep "^DISPLAY")
   }
 else
   function refresh { }
