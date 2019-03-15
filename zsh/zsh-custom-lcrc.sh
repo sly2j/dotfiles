@@ -23,6 +23,22 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias root='root -l'
 alias ltmux="tmux -u list-sessions"
 alias atmux="tmux -u attach-session -t"
+## these need system python, not fancy python
+function rootls() {
+  OLDPATH=PATH
+  export PATH="/usr/bin:$PATH"
+  `root-config --bindir`/rootls $@
+  export PATH=$OLDPATH
+}
+function rootbrowse() {
+  OLDPATH=PATH
+  export PATH="/usr/bin:$PATH"
+  `root-config --bindir`/rootbrowse $@
+  export PATH=$OLDPATH
+}
+function pyroot() {
+  /usr/bin/python
+}
 #alias cppcompile='g++ -std=c++17 -stdlib=libc++'
 #alias g='git'
 # ------------------------------------------------------------------------------
