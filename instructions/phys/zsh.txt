@@ -1,0 +1,7 @@
+git clone https://github.com/zsh-users/zsh.git
+git checkout zsh-5.7.1
+./Util/preconfig
+./configure --prefix=$HOME/.local/opt/zsh_5.7.1
+make -j4
+make install
+## make install will give an error related to building the docu. I don't care about this.
