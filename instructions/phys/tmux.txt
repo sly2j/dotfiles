@@ -1,0 +1,6 @@
+git clone https://github.com/tmux/tmux.git
+cd tmux
+git checkout 2.8
+sh autogen.sh
+./configure --prefix=/home/anl/sjoosten/.local/opt/tmux_2.8
+make -j8 install
