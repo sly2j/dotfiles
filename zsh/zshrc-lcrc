@@ -124,7 +124,7 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh"
 eval $(ssh-agent)
-ssh-add "/.ssh/id_rsa_git"
+ssh-add "~/.ssh/id_rsa_git"
 
 ## set font encoding
 export LC_CTYPE=en_US.UTF-8
