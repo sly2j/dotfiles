@@ -25,3 +25,6 @@ prepend-path    PYTHONPATH       $iprefix
 prepend-path    PYTHONPATH       $iprefix/lib
 prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
+
+module load hallac/evio/20190324
+module load root/6.16.00

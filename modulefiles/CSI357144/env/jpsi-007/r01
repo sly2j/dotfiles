@@ -1,0 +1,12 @@
+#%Module1.0#####################################################################
+##
+## for Jpsi-007 software
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for Jpsi-007 r01"
+}
+module-whatis   "Jpsi-007/r01"
+
+module load root/6.16.00
+module load python3/3.7.2_2
+module load hallac/hcana/20190324

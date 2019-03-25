@@ -25,3 +25,5 @@ prepend-path    PYTHONPATH       $iprefix
 prepend-path    PYTHONPATH       $iprefix/lib
 prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
+
+module load hallac/podd/20190324
