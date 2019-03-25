@@ -31,6 +31,7 @@ source /usr/local/opt/modules/init/zsh
 
 
 module use $HOME/Environment/modulefiles
+module use $HOME/.dotfiles/modulefiles/CSI357144
 
 ## fix manpath for tmux
 if [[ $TMUX ]]; then
@@ -39,7 +40,7 @@ if [[ $TMUX ]]; then
 fi #TMUX guard
 
 ## The root module will also load the correct version of python etc
-module load root
+module load root/6.16.00
 
 # ------------------------------------------------------------------------------
 # ALIASES

@@ -1,0 +1,26 @@
+#%Module1.0#####################################################################
+##
+## for python 3.7.2_2
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for python 3.7.2_2"
+}
+module-whatis   "python 3.7.2_2"
+
+# for Tcl script use only
+set     version      3.2.8
+
+# for Tcl script use only
+set	version		4.1.4
+set iprefix /usr/local/Cellar/python/3.7.2_2
+set iprefix2 /usr/local/Cellar/python/3.7.2_2/Frameworks/Python.framework/Versions/3.7
+
+
+setenv          MODULESHOME      $iprefix
+prepend-path    PATH             $iprefix2/bin
+prepend-path    PATH             $iprefix/libexec/bin
+prepend-path    MANPATH          $iprefix/share/man
+prepend-path    LD_LIBRARY_PATH  $iprefix2/lib
+prepend-path    DYLD_LIBRARY_PATH  $iprefix2/lib
+prepend-path    PYTHONPATH       $iprefix2
+prepend-path    PYTHONPATH       $iprefix2/lib
