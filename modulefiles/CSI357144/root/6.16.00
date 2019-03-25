@@ -18,13 +18,10 @@ setenv          MODULESHOME      $iprefix
 setenv          ROOTSYS          $iprefix
 prepend-path    PATH             $iprefix/bin
 prepend-path    MANPATH          $iprefix/share/man
-prepend-path    LD_LIBRARY_PATH  $iprefix/lib
-prepend-path    LD_LIBRARY_PATH  $iprefix/lib64
-prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib
-prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib64
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib/root
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib/root
 prepend-path    PYTHONPATH       $iprefix
-prepend-path    PYTHONPATH       $iprefix/lib
-prepend-path    PYTHONPATH       $iprefix/lib64
+prepend-path    PYTHONPATH       $iprefix/lib/root
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
 module load     python3/3.7.2_2
