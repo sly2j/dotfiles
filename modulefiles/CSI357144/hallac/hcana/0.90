@@ -3,16 +3,16 @@
 ## for HEPMC
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for HallAC_podd 20190324"
+    puts stderr "This module sets up the environment for HallAC_hcana 20190324"
 }
-module-whatis   "HallAC_podd 20190324 (git hash ff33236)"
+module-whatis   "HallAC_hcana 0.90 (git hash eb4644a)"
 
 # for Tcl script use only
 set     version      3.2.8
 
 # for Tcl script use only
 set	version		4.1.4
-set iprefix /Users/sjoosten/.local/opt/analyzer_20190324
+set iprefix /Users/sjoosten/.local/opt/hallac/hcana_0.90
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin
@@ -26,5 +26,4 @@ prepend-path    PYTHONPATH       $iprefix/lib
 prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
-module load hallac/evio/20190324
-module load root/6.16.00
+module load hallac/podd/1.7.0
