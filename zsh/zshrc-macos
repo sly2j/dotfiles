@@ -114,6 +114,7 @@ export SSH_KEY_PATH="~/.ssh/"
 ssh-add ~/.ssh/id_rsa
 ssh-add ~/.ssh/id_rsa_git
 ssh-add ~/.ssh/id_rsa_lcrc
+ssh-add ~/.ssh/id_rsa_gcloud
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

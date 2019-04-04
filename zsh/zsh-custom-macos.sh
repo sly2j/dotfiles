@@ -156,3 +156,18 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[assign]=none
+
+## workon function
+function workon() {
+  if [ -z "$1" ]; then
+    'Error: no project name givem'
+    exit 1
+  elif [ "$1" = "jpsi" ]; then
+    cd $HOME/work/Jpsi-007
+    module purge
+    module load env/jpsi-007/pro
+  else
+    echo "Error: unknown project name: $1"
+    exit 1
+  fi
+}
