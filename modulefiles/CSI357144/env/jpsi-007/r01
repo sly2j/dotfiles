@@ -11,4 +11,4 @@ module load llvm/8.0.0
 module load root/6.16.00
 module load python3/3.7.2_2
 module load hallac/hcana/0.90
-module load hepmc/3.1.1
+module load hepmc/2.6.9
