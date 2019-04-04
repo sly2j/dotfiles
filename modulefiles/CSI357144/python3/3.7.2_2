@@ -17,6 +17,7 @@ set iprefix2 /usr/local/Cellar/python/3.7.2_2/Frameworks/Python.framework/Versio
 
 
 setenv          MODULESHOME      $iprefix
+prepend-path    PATH             /Users/sjoosten/Library/Python/3.7/bin
 prepend-path    PATH             $iprefix2/bin
 prepend-path    PATH             $iprefix/libexec/bin
 prepend-path    MANPATH          $iprefix/share/man
