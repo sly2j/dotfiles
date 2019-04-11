@@ -3,16 +3,16 @@
 ## for pcsim
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for Pcsim (stable 2.3 release, muon version)"
+    puts stderr "This module sets up the environment for Pcsim (stable 2.3 release)"
 }
-module-whatis   "Pcsim 2.3.1 (stable, muon version)"
+module-whatis   "Pcsim 2.3.2 (stable)"
 
 # for Tcl script use only
 set     version      3.2.8
 
 # for Tcl script use only
 set	version		4.1.4
-set iprefix /Users/sjoosten/.local/opt/pcsim_2.3.1-muons
+set iprefix /Users/sjoosten/.local/opt/pcsim_2.3.2
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin
@@ -27,4 +27,3 @@ prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
 module load     root/6.16.00
-conflict        pcsim
