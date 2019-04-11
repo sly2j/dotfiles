@@ -27,4 +27,3 @@ prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
 module load     root/6.16.00
-conflict        pcsim
