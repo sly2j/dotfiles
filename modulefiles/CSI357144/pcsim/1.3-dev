@@ -1,0 +1,29 @@
+#%Module1.0#####################################################################
+##
+## for pcsim
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for Pcsim (stable 2.3 release)"
+}
+module-whatis   "Pcsim 1.3 (dev branch)"
+
+# for Tcl script use only
+set     version      3.2.8
+
+# for Tcl script use only
+set	version		4.1.4
+set iprefix /Users/sjoosten/.local/opt/pcsim_1.3-dev
+
+setenv          MODULESHOME      $iprefix
+prepend-path    PATH             $iprefix/bin
+prepend-path    MANPATH          $iprefix/share/man
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib64
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib64
+prepend-path    PYTHONPATH       $iprefix
+prepend-path    PYTHONPATH       $iprefix/lib
+prepend-path    PYTHONPATH       $iprefix/lib64
+prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
+
+module load     root/6.16.00

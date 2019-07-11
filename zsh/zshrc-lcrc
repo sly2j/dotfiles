@@ -1,6 +1,17 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# ------------------------------------------------------------------------------
+# PATH
+# ------------------------------------------------------------------------------
+# Add commonly used folders to $PATH
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# ==============================================================================
+# LOAD ENVIRONMENT MODULES HERE
+# ==============================================================================
+module use "$HOME/.dotfiles/modulefiles/lcrc"
+module load SciEnv
+
 # ==============================================================================
 # OH-MY-ZSH
 # ==============================================================================
@@ -37,9 +48,10 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git colored-man colorize pip python brew osx tmux zsh-autosuggestions zsh-syntax-highlighting 
+  colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
 )
-
+  #git colored-man colorize pip python zsh-syntax-highlighting tmux
+  
 # ==============================================================================
 # ZSH SETTINGS
 # ==============================================================================
@@ -103,18 +115,19 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/"
-ssh-add ~/.ssh/id_rsa
-ssh-add ~/.ssh/id_rsa_git
-ssh-add ~/.ssh/id_rsa_lcrc
-ssh-add ~/.ssh/id_rsa_gcloud
+export SSH_KEY_PATH="~/.ssh"
+eval $(ssh-agent)
+ssh-add "~/.ssh/id_rsa_git"
+
+## set font encoding
+export LC_CTYPE=en_US.UTF-8
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -123,6 +136,3 @@ ssh-add ~/.ssh/id_rsa_gcloud
 
 # SJJ: use own custom zsh file
 source $HOME/.zsh-custom
-
-# iterm2 zsh integration
-source ~/.iterm2_shell_integration.zsh

@@ -1,10 +1,4 @@
 # ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-# Add commonly used folders to $PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
-# ------------------------------------------------------------------------------
 # FUNCTIONS
 # ------------------------------------------------------------------------------
 # File search functions
@@ -15,17 +9,26 @@ function r() { grep "$1" ${@:2} -R . }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # ------------------------------------------------------------------------------
-# ENVIRONMENT MODULES
+# ENVIRONMENT MODULES --> in .zshrc directly so oh-my-zsh can find tmux
 # ------------------------------------------------------------------------------
-source /usr/local/opt/modules/init/zsh
-module use $HOME/Environment/modulefiles
-
-## The root module will also load the correct version of python etc
-module load root
-
 # ------------------------------------------------------------------------------
 # ALIASES
 # ------------------------------------------------------------------------------
 alias root='root -l'
-alias cppcompile='g++ -std=c++17 -stdlib=libc++'
-alias g='git'
+alias ltmux="tmux -u list-sessions"
+alias atmux="tmux -u attach-session -t"
+#alias cppcompile='g++ -std=c++17 -stdlib=libc++'
+#alias g='git'
+# ------------------------------------------------------------------------------
+# Fix display environment for tmux (preexec: runs before every command)
+# ------------------------------------------------------------------------------
+if [ -n "$TMUX" ]; then
+  function refresh {
+    export $(tmux -L sly show-environment | grep "^DISPLAY")
+  }
+else
+  function refresh { }
+fi
+function preexec {
+  refresh
+}
