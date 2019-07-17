@@ -45,6 +45,8 @@ set linebreak                 " don't break words in wrap mode
 set nocompatible              " vim defaults
 "set spell spelllang=nl "spellchecking for dutch (disabled)
 set tabpagemax=50
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
 "set laststatus=2              " always show statusline
 "set statusline=\ %F%m%r%h\ %w\ \ Line:\ %l/%L:%c   "format statusline
 
@@ -106,3 +108,24 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ------------------------------------------------------------------------------
+" AIRLINE
+" ------------------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
+
+" ------------------------------------------------------------------------------
+" FORTRAN
+" ------------------------------------------------------------------------------
+let fortran_have_tabs=1
+if has('syntax') && (&t_Co > 2)
+    syntax enable
+endif
+
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+" jump to last position when reopening a file
+" ------------------------------------------------------------------------------
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif

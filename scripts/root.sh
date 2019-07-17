@@ -10,7 +10,7 @@ if [ -f $DOTFILES/.rootlogon.C -o -f $DOTFILES/.rootstyle.C ]; then
   exit 1
 fi
 
-echo ln -s $SOURCE_DIR/root/rootlogon.C $DOTFILES/.rootlogon.C
-ln -s $SOURCE_DIR/root/rootlogon.C $DOTFILES/.rootlogon.C
+echo ln -s $SOURCE_DIR/root/rootlogon-${MACHINE}.C $DOTFILES/.rootlogon.C
+ln -s $SOURCE_DIR/root/rootlogon-${MACHINE}.C $DOTFILES/.rootlogon.C
 echo ln -s $SOURCE_DIR/root/rootstyle.C $DOTFILES/.rootstyle.C
 ln -s $SOURCE_DIR/root/rootstyle.C $DOTFILES/.rootstyle.C

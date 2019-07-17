@@ -33,13 +33,13 @@ function rootbrowse() {
 # ------------------------------------------------------------------------------
 # Fix display environment for tmux (preexec: runs before every command)
 # ------------------------------------------------------------------------------
-if [ -n "$TMUX" ]; then
-  function refresh {
-    export $(tmux -L sly show-environment | grep "^DISPLAY")
-  }
-else
-  function refresh { }
-fi
-function preexec {
-  refresh
-}
+#if [ -n "$TMUX" ]; then
+#  function refresh {
+#    export $(tmux -L sly show-environment | grep "^DISPLAY")
+# }
+#lse
+# function refresh { }
+#i
+#unction preexec {
+# refresh
+#

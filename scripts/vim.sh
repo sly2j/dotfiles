@@ -28,6 +28,7 @@ for i in $SOURCE_DIR/vim/bundle/*; do
   echo ln -s $i $DOTFILES/.vim/bundle/
   ln -s $i $DOTFILES/.vim/bundle/
 done
+echo mkdir $DOTFILES/.vim/undodir
 
 echo ln -s $SOURCE_DIR/vim/vimrc-${MACHINE} $DOTFILES/.vimrc
 ln -s $SOURCE_DIR/vim/vimrc-${MACHINE} $DOTFILES/.vimrc
