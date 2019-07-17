@@ -43,3 +43,5 @@ function rootbrowse() {
 #unction preexec {
 # refresh
 #
+
+alias fix_keyboard='/usr/bin/setxbkmap -option "ctrl:swapcaps"'
