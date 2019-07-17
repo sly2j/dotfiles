@@ -26,19 +26,25 @@ if [ ${MACHINE} = "cdaq" ]; then
 fi
 
 #checkout powerline9k theme
-if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerline9k ]; then
+if [ -d $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerline9k ]; then
   echo "powerline9k theme already installed"
 else
   echo "Grabbing powerline9k theme"
   git clone https://github.com/bhilburn/powerlevel9k.git $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerlevel9k
 fi
-if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+if [ -d $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerline9k ]; then
+  echo "powerline10k theme already installed"
+else
+  echo "Grabbing powerline10k theme"
+  git clone https://github.com/romkatv/powerlevel10k.git $SOURCE_DIR/zsh/oh-my-zsh/custom/themes/powerlevel10k
+fi
+if [ -d $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "grabbing zsh-autosuggestions"
   git clone https://github.com/zsh-users/zsh-autosuggestions.git $SOURCE_DIR/zsh/oh-my-zsh/plugins/zsh-autosuggestions
 fi
-if [ -f $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+if [ -d $SOURCE_DIR/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
   echo "zsh-syntax-highlighting already installed"
 else
   echo "grabbing zsh-syntax-highlighting"
