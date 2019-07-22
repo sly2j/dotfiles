@@ -5,7 +5,7 @@
 # PATH
 # ------------------------------------------------------------------------------
 # Add commonly used folders to $PATH
-export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # ==============================================================================
 # LOAD ENVIRONMENT MODULES HERE
 # ==============================================================================
@@ -50,7 +50,7 @@ source "$HOME/.dotfiles/zsh/purepower-theme"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
+  colored-man-pages colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
 )
   #git colored-man colorize pip python zsh-syntax-highlighting tmux
   
