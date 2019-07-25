@@ -77,6 +77,7 @@ alias go_monitor= '~/bin/Linux/firefox --new-window "cdaql1.jlab.org:8888" &'
 
 # ------------------------------------------------------------------------------
 # Fix display environment for tmux (preexec: runs before every command)
+# NOTE: will not work properly if we login without x-forwarding
 # ------------------------------------------------------------------------------
 if [ -n "$TMUX" ]; then
   function refresh {

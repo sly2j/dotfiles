@@ -10,11 +10,13 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # ==============================================================================
 # Environment modules
 # ==============================================================================
-source /etc/profile.d/modules.sh
+if [ -f /etc/profile.d/modules.sh ]; then
+  source /etc/profile.d/modules.sh
 
-if [ -f /group/jpsi-007/local/setup.sh ]; then
-source /group/jpsi-007/local/setup.sh
-source /group/jpsi-007/local/pro.sh
+  if [ -f /group/jpsi-007/local/setup.sh ]; then
+    source /group/jpsi-007/local/setup.sh
+    source /group/jpsi-007/local/pro.sh
+  fi
 fi
 
 # ==============================================================================
@@ -40,10 +42,13 @@ unset LS_COLORS
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 
-## Load the purepower theme for powerlevel10k
-ZSH_THEME="powerlevel10k/powerlevel10k"
-source "$HOME/.dotfiles/zsh/purepower-theme"
-
+## Load the purepower theme for powerlevel10k unless this is a login node
+if [[ $HOST == "hallgw"* ]]; then
+  ZSH_THEME="bira"
+else
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+  source "$HOME/.dotfiles/zsh/purepower-theme"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -59,9 +64,16 @@ source "$HOME/.dotfiles/zsh/purepower-theme"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
-)
+
+if [[ $HOST == "hallgw"* ]]; then
+  plugins=(
+    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting 
+  )
+else
+  plugins=(
+    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
+  )
+fi
   #git colored-man colorize pip python zsh-syntax-highlighting tmux
   
 # ==============================================================================
