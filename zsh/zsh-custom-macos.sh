@@ -40,7 +40,7 @@ if [[ $TMUX ]]; then
 fi #TMUX guard
 
 ## The root module will also load the correct version of python etc
-module load root/6.16.00
+module load root/6.18.00_2
 
 # ------------------------------------------------------------------------------
 # ALIASES
@@ -91,6 +91,29 @@ function hallgw_login() {
     ssh -t sjjooste@hallgw.jlab.org ssh ${TLHOST}
   fi
 }
+
+function b010_login() {
+  if [ -z "$1" ]; then
+    echo 'No host given'
+    echo 'Usage: b010_login [USER@]HOST'
+  else
+    TLHOST=$1
+    echo "Establishing b010 login GW passthrough to to $1"
+    ssh -J sjoosten@login.phy.anl.gov -t -X sjoosten@lab-lan1.phy.anl.gov ssh -X ${TLHOST}
+  fi
+}
+function b010_tunnel() {
+  if [ -z "$1" -o -z "$2" ]; then
+    echo 'No host or port given'
+    echo 'Usage: b010_tunnel [USER@]HOST PORT'
+  else
+    TLHOST=$1
+    TLPORT=$2
+    echo "Establishing b010 tunnel through ANL PHY to $1 (port: $2)"
+    ssh -J sjoosten@login.phy.anl.gov -t -L ${TLPORT}:localhost:1${TLPORT} sjoosten@lab-lan1.phy.anl.gov ssh -L 1${TLPORT}:localhost:${TLPORT} ${TLHOST}
+  fi
+}
+
 function simonadaq_vnc_tunnel() {
   if [ -z "$1" ] ; then
     echo 'No port offset given, defaulting to :1 (5901)'
@@ -133,6 +156,28 @@ function cdaql2_vnc_tunnel() {
 function cdaql2_login() {
   hallgw_login "cdaq@cdaql2" 
 }
+
+function sodium_login() {
+  b010_login "10.10.241.20"
+}
+function sodium_vnc_tunnel() {
+  if [ -z "$1" ] ; then
+    echo 'No port offset given, defaulting to :1 (5901)'
+    export PORT=5901
+  else
+    echo "VNC port offset :$1 ($((5900 + $1)))"
+    export PORT=$((5900 + $1))
+  fi
+  if [ -z "$2" ]; then
+    echo "No user given, defaulting to $USER"
+    export USR=$USER
+  else
+    echo "User: $2"
+    export USR=$2
+  fi
+  b010_tunnel "$USR@10.10.241.20" $PORT
+}
+
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[default]=none

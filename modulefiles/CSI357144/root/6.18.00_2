@@ -3,16 +3,16 @@
 ## for ROOT
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for ROOT 6.16.00"
+    puts stderr "This module sets up the environment for ROOT 6.18.00"
 }
-module-whatis   "ROOT 6.16.00"
+module-whatis   "ROOT 6.18.00_2"
 
 # for Tcl script use only
 set     version      3.2.8
 
 # for Tcl script use only
 set	version		4.1.4
-set iprefix /usr/local/Cellar/root/6.16.00
+set iprefix /usr/local/Cellar/root/6.18.00_2
 
 setenv          MODULESHOME      $iprefix
 setenv          ROOTSYS          $iprefix
@@ -24,4 +24,4 @@ prepend-path    PYTHONPATH       $iprefix
 prepend-path    PYTHONPATH       $iprefix/lib/root
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
-module load     python3/3.7.2_2
+module load     python3/3.7.4
