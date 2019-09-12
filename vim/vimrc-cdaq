@@ -67,16 +67,13 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 let g:tex_flavor = "latex"             " TeX is LaTeX
 
-" set GUI font here if needed
-" set guifont=Menlo\ Regular:h12
-
 " ------------------------------------------------------------------------------
 " clang-format
 " ------------------------------------------------------------------------------
 let g:clang_format#command = "/group/jpsi-007/local/stow/clang-format_7.0.1/bin/clang-format"
 let g:clang_format#code_style = "llvm"
 let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format_on_insert_leave = 1
+"let g:clang_format#auto_format_on_insert_leave = 1
 let g:clang_format#style_options = {
             \ "BreakConstructorInitializerBeforeComma" : "true",
             \ "ConstructorInitializerAllOnOneLineOrOnePerLine" : "true",
@@ -103,7 +100,7 @@ autocmd FileType c,cpp,objc ClangFormatAutoEnable
 "let g:ycm_global_ycm_extra_conf = "~/sjjooste/dotfiles/vim/ycm_extra_conf.py"
 "let g:ycm_extra_conf_globlist = ["~/Dropbox/Work/Tools/LIGEN/*"]
 
-" for now no diagnostics as XCode catches up with C++17...
+" for now no diagnostics 
 let g:ycm_enable_diagnostic_signs = 0 
 let g:ycm_enable_diagnostic_highlighting = 0
 
@@ -111,9 +108,9 @@ let g:ycm_enable_diagnostic_highlighting = 0
 " NERDTREE
 " ------------------------------------------------------------------------------
 " auto-open nerdtree when vim starts in GUI mode
-if has('gui_running')
-  autocmd vimenter * NERDTree
-endif
+"if has('gui_running')
+"  autocmd vimenter * NERDTree
+"endif
 
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
