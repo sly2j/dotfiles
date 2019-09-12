@@ -1,5 +1,10 @@
 module use "$HOME/.dotfiles/modulefiles/lcrc"
-module load SciEnv
+
+module load singularity/3.0.2
+module load tmux
+module load llvm
+module load cmake
+module load vim
 
 function lcrc_info() {
   echo -n "==================================================================="
