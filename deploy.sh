@@ -24,11 +24,11 @@ if [ ${MACHINE} = "linux" ]; then
     *phy.anl*)
       MACHINE=phy
       ;;
-    *lcrc*)
+    *lcrc* | *bebop*)
       MACHINE=lcrc
       ;;
-    *bebop*)
-      MACHINE=lcrc
+    *alcf*)
+      MACHINE=alcf
       ;;
     *cdaq*)
       MACHINE=cdaq

@@ -6,19 +6,8 @@
 # don't execute PATH modifications for tmux 
 # (this will screw up module command)
 if [[ -z $TMUX ]]; then
-  export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
   export PATH=/Applications/MacVim.app/Contents/bin:$PATH
 fi # TMUX GUARD
-
-# ------------------------------------------------------------------------------
-# FUNCTIONS
-# ------------------------------------------------------------------------------
-# File search functions
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
-
-# Create a folder and move into it in one command
-function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # ------------------------------------------------------------------------------
 # ENVIRONMENT MODULES
@@ -28,7 +17,6 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # In case of tmux, this screws up the manpath, so lets save try to defend against that
 MANPATH_SAVE=$MANPATH
 source /usr/local/opt/modules/init/zsh
-
 
 module use $HOME/Environment/modulefiles
 module use $HOME/.dotfiles/modulefiles/CSI357144
@@ -41,14 +29,6 @@ fi #TMUX guard
 
 ## The root module will also load the correct version of python etc
 module load root/6.18.00_2
-
-# ------------------------------------------------------------------------------
-# ALIASES
-# ------------------------------------------------------------------------------
-alias root='root -l'
-alias cppcompile='c++ -std=c++17 -stdlib=libc++'
-alias g='git'
-
 
 # ----------------------------------------------------------------------------
 #    ssh tunnels 
@@ -177,30 +157,6 @@ function sodium_vnc_tunnel() {
   fi
   b010_tunnel "$USR@10.10.241.20" $PORT
 }
-
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green
-ZSH_HIGHLIGHT_STYLES[alias]=none
-ZSH_HIGHLIGHT_STYLES[builtin]=none
-ZSH_HIGHLIGHT_STYLES[function]=none
-ZSH_HIGHLIGHT_STYLES[command]=none
-ZSH_HIGHLIGHT_STYLES[precommand]=none
-ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-ZSH_HIGHLIGHT_STYLES[hashed-command]=none
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[globbing]=none
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=blue
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[assign]=none
 
 ## workon function
 function workon() {

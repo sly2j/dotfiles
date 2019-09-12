@@ -8,6 +8,7 @@ export PATH="$HOME/bin:$PATH"
 # reset LS_COLORS so we actually use the ones from our zsh theme
 unset LS_COLORS
 
+export DOTFILES="$HOME/sjjooste/.dotfiles"
 source /group/jpsi-007/local/setup.sh
 module load zsh
 ZDOTDIR=$HOME/sjjooste/.dotfiles zsh
