@@ -27,7 +27,7 @@ if [ ${MACHINE} = "linux" ]; then
     *lcrc* | *bebop*)
       MACHINE=lcrc
       ;;
-    *alcf*)
+    *alcf* | *theta*)
       MACHINE=alcf
       ;;
     *cdaq*)

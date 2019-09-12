@@ -4,3 +4,4 @@ if [ -f /group/jpsi-007/local/setup.sh ]; then
 fi
 
 export DOTFILES=$HOME/sjjooste/.dotfiles
+export TMUX_CMD="tmux -L sly"
