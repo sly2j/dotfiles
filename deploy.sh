@@ -22,7 +22,7 @@ fi
 if [ ${MACHINE} = "linux" ]; then
   case "${HOSTNAME}" in
     *phy.anl*)
-      MACHINE=phys
+      MACHINE=phy
       ;;
     *lcrc*)
       MACHINE=lcrc
