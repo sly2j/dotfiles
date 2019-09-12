@@ -11,8 +11,8 @@ if [ -f $DOTFILES/.zshrc -o -f $DOTFILES/.zsh-custom -o -f $DOTFILES/.oh-my-zsh 
   exit 1
 fi
 
-echo ln -s $SOURCE_DIR/zsh/zshrc-${MACHINE} $DOTFILES/.zshrc
-ln -s $SOURCE_DIR/zsh/zshrc-${MACHINE} $DOTFILES/.zshrc
+echo ln -s $SOURCE_DIR/zsh/zshrc $DOTFILES/.zshrc
+ln -s $SOURCE_DIR/zsh/zshrc $DOTFILES/.zshrc
 
 echo ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE} $DOTFILES/.zsh-custom
 ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE}.sh $DOTFILES/.zsh-custom
@@ -20,9 +20,9 @@ ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE}.sh $DOTFILES/.zsh-custom
 echo ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 
-if [ ${MACHINE} = "cdaq" ]; then
-  echo ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
-  ln -s $SOURCE_DIR/zsh/launch-zsh-cdaq.sh $DOTFILES/.launch-zsh.sh
+if [ ${MACHINE} = "cdaq" ] || [ ${MACHINE} = "jlab" ]; then
+  echo ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
+  ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
 fi
 
 #checkout powerline9k theme

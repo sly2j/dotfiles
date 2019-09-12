@@ -1,4 +1,5 @@
-
+## Extra fix for macos autocompletion
+ZSH_DISABLE_COMPFIX=true
 # ------------------------------------------------------------------------------
 # PATH
 # ------------------------------------------------------------------------------
@@ -6,19 +7,8 @@
 # don't execute PATH modifications for tmux 
 # (this will screw up module command)
 if [[ -z $TMUX ]]; then
-  export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
   export PATH=/Applications/MacVim.app/Contents/bin:$PATH
 fi # TMUX GUARD
-
-# ------------------------------------------------------------------------------
-# FUNCTIONS
-# ------------------------------------------------------------------------------
-# File search functions
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
-
-# Create a folder and move into it in one command
-function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # ------------------------------------------------------------------------------
 # ENVIRONMENT MODULES
@@ -29,8 +19,6 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 MANPATH_SAVE=$MANPATH
 source /usr/local/opt/modules/init/zsh
 
-
-module use $HOME/Environment/modulefiles
 module use $HOME/.dotfiles/modulefiles/CSI357144
 
 ## fix manpath for tmux
@@ -40,15 +28,7 @@ if [[ $TMUX ]]; then
 fi #TMUX guard
 
 ## The root module will also load the correct version of python etc
-module load root/6.16.00
-
-# ------------------------------------------------------------------------------
-# ALIASES
-# ------------------------------------------------------------------------------
-alias root='root -l'
-alias cppcompile='c++ -std=c++17 -stdlib=libc++'
-alias g='git'
-
+module load root/6.18.00_2
 
 # ----------------------------------------------------------------------------
 #    ssh tunnels 
@@ -91,6 +71,29 @@ function hallgw_login() {
     ssh -t sjjooste@hallgw.jlab.org ssh ${TLHOST}
   fi
 }
+
+function b010_login() {
+  if [ -z "$1" ]; then
+    echo 'No host given'
+    echo 'Usage: b010_login [USER@]HOST'
+  else
+    TLHOST=$1
+    echo "Establishing b010 login GW passthrough to to $1"
+    ssh -J sjoosten@login.phy.anl.gov -t -X sjoosten@lab-lan1.phy.anl.gov ssh -X ${TLHOST}
+  fi
+}
+function b010_tunnel() {
+  if [ -z "$1" -o -z "$2" ]; then
+    echo 'No host or port given'
+    echo 'Usage: b010_tunnel [USER@]HOST PORT'
+  else
+    TLHOST=$1
+    TLPORT=$2
+    echo "Establishing b010 tunnel through ANL PHY to $1 (port: $2)"
+    ssh -J sjoosten@login.phy.anl.gov -t -L ${TLPORT}:localhost:1${TLPORT} sjoosten@lab-lan1.phy.anl.gov ssh -L 1${TLPORT}:localhost:${TLPORT} ${TLHOST}
+  fi
+}
+
 function simonadaq_vnc_tunnel() {
   if [ -z "$1" ] ; then
     echo 'No port offset given, defaulting to :1 (5901)'
@@ -134,28 +137,26 @@ function cdaql2_login() {
   hallgw_login "cdaq@cdaql2" 
 }
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green
-ZSH_HIGHLIGHT_STYLES[alias]=none
-ZSH_HIGHLIGHT_STYLES[builtin]=none
-ZSH_HIGHLIGHT_STYLES[function]=none
-ZSH_HIGHLIGHT_STYLES[command]=none
-ZSH_HIGHLIGHT_STYLES[precommand]=none
-ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-ZSH_HIGHLIGHT_STYLES[hashed-command]=none
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[globbing]=none
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=blue
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[assign]=none
+function sodium_login() {
+  b010_login "10.10.241.20"
+}
+function sodium_vnc_tunnel() {
+  if [ -z "$1" ] ; then
+    echo 'No port offset given, defaulting to :1 (5901)'
+    export PORT=5901
+  else
+    echo "VNC port offset :$1 ($((5900 + $1)))"
+    export PORT=$((5900 + $1))
+  fi
+  if [ -z "$2" ]; then
+    echo "No user given, defaulting to $USER"
+    export USR=$USER
+  else
+    echo "User: $2"
+    export USR=$2
+  fi
+  b010_tunnel "$USR@10.10.241.20" $PORT
+}
 
 ## workon function
 function workon() {
