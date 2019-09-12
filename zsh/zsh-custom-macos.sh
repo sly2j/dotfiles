@@ -1,4 +1,5 @@
-
+## Extra fix for macos autocompletion
+ZSH_DISABLE_COMPFIX=true
 # ------------------------------------------------------------------------------
 # PATH
 # ------------------------------------------------------------------------------
@@ -18,7 +19,6 @@ fi # TMUX GUARD
 MANPATH_SAVE=$MANPATH
 source /usr/local/opt/modules/init/zsh
 
-module use $HOME/Environment/modulefiles
 module use $HOME/.dotfiles/modulefiles/CSI357144
 
 ## fix manpath for tmux
