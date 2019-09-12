@@ -150,9 +150,10 @@ fi
 # ssh
 # ------------------------------------------------------------------------------
 export SSH_KEY_PATH="$HOME/.ssh"
-ssh-add -l &>/dev/null
-if [[ "$?" == 2 ]]; then
-  eval $(ssh-agent)
+#ssh-add -l &>/dev/null
+#if [[ "$?" == 2 ]]; then
+if [ -z $SSH_AGENT_PID ]; then
+  eval $(ssh-agent -s)
   for key in id_rsa id_rsa_lcrc id_rsa_git id_rsa_gcloud; do
     if [ -f $HOME/.ssh/$key ]; then
       ssh-add "$HOME/.ssh/$key"
@@ -195,7 +196,7 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 # Fix display environment for tmux (preexec: runs before every command)
 # ------------------------------------------------------------------------------
 # Only if we have a display!
-if [ -n $DISPLAY ]; then
+if [ ! -z $DISPLAY ]; then
   if [ -n "$TMUX" ]; then
     if [ -z ${TMUX_CMD} ]; then
       export TMUX_CMD=tmux
