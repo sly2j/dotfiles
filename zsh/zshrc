@@ -66,15 +66,15 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 if [[ $(uname -s) == "Darwin"* ]]; then
   plugins=(
-    git colored-man colorize pip python brew osx tmux zsh-autosuggestions zsh-syntax-highlighting 
+    git colored-man-pages colorize pip python brew osx tmux zsh-autosuggestions zsh-syntax-highlighting 
   )
 elif [ ! -x $(command -v tmux) ] | [ -n $NO_TMUX ]; then
   plugins=(
-    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting 
+    colored-man-pages colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting 
   )
 else
   plugins=(
-    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
+    colored-man-pages colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
   )
 fi
   
