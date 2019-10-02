@@ -1,7 +1,9 @@
 if [ -f /group/jpsi-007/local/setup.sh ]; then
   source /group/jpsi-007/local/setup.sh
-  source /group/jpsi-007/local/pro.sh
 fi
+module load zsh
+module load vim
+module load tmux
 
 export PATH="$PATH:/site/bin"
 

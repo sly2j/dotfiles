@@ -24,7 +24,7 @@ ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 echo ln -s $SOURCE_DIR/zsh/p10k.zsh $DOTFILES/.p10k.zsh
 ln -s $SOURCE_DIR/zsh/p10k.zsh $DOTFILES/.p10k.zsh
 
-if [ ${MACHINE} = "cdaq" ] || [ ${MACHINE} = "jlab"]; then
+if [ ${MACHINE} = "cdaq" ] || [ ${MACHINE} = "jlab" ]; then
   echo ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
   ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
 fi
