@@ -9,7 +9,7 @@ module-whatis   "vim 8.1.2022"
 
 # for Tcl script use only
 set    version        4.1.4
-set iprefix /home/anl/sjoosten/.local/opt/vim_8.1.2022
+set iprefix $env(HOME)/.local/opt/vim_8.1.2022
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin

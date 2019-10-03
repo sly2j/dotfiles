@@ -9,7 +9,7 @@ module-whatis   "tmux 2.8"
 
 # for Tcl script use only
 set    version        4.1.4
-set iprefix /home/anl/sjoosten/.local/opt/tmux_2.8
+set iprefix $env(HOME)/.local/opt/tmux_2.8
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin
