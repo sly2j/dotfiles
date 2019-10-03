@@ -1,0 +1,25 @@
+#%Module1.0#####################################################################
+##
+## for vim
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for vim 8.1.2022"
+}
+module-whatis   "vim 8.1.2022"
+
+# for Tcl script use only
+set    version        4.1.4
+set iprefix /home/anl/sjoosten/.local/opt/vim_8.1.2022
+
+setenv          MODULESHOME      $iprefix
+prepend-path    PATH             $iprefix/bin
+prepend-path    MANPATH          $iprefix/share/man
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib64
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib64
+prepend-path    PYTHONPATH       $iprefix
+prepend-path    PYTHONPATH       $iprefix/lib
+prepend-path    PYTHONPATH       $iprefix/lib64
+prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
+

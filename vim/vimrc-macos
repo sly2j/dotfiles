@@ -55,6 +55,10 @@ set undodir=~/.vim/undodir
 " (despite the mappings later):
 autocmd FileType make set noexpandtab shiftwidth=8
 
+" Show tabs and EOL characters
+set list
+set listchars=eol:¬,tab:▸.
+
 let g:tex_flavor = "latex"             " TeX is LaTeX
 
 " Mac Vim font for retina display
@@ -118,7 +122,10 @@ let g:airline_powerline_fonts = 1
 " ------------------------------------------------------------------------------
 " FORTRAN
 " ------------------------------------------------------------------------------
+let fortran_free_source=1
 let fortran_have_tabs=1
+"let fortran_more_precise=1
+let fortran_do_enddo=1
 if has('syntax') && (&t_Co > 2)
     syntax enable
 endif

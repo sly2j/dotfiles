@@ -22,13 +22,13 @@ fi
 if [ ${MACHINE} = "linux" ]; then
   case "${HOSTNAME}" in
     *phy.anl*)
-      MACHINE=phys
+      MACHINE=phy
       ;;
-    *lcrc*)
+    *lcrc* | *bebop*)
       MACHINE=lcrc
       ;;
-    *bebop*)
-      MACHINE=lcrc
+    *alcf* | *theta*)
+      MACHINE=alcf
       ;;
     *cdaq*)
       MACHINE=cdaq

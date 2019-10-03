@@ -37,7 +37,7 @@ echo ln -s $SOURCE_DIR/vim/clang-format-dotfile $DOTFILES/.clang-format
 ln -s $SOURCE_DIR/vim/clang-format-dotfile $DOTFILES/.clang-format
 
 ## post install hooks
-if [ ${MACHINE} = "cdaq" -o ${MACHINE} = "jlab" ]; then
+if [ ${MACHINE} = "cdaq" ] | [ ${MACHINE} = "alcf" ]; then
   echo "REMOVING YouCompleteMe Plugin for machine: ${MACHINE}"
   rm $DOTFILES/.vim/bundle/YouCompleteMe
   if [ -f $HOME/.clang-format ]; then
