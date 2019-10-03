@@ -47,7 +47,10 @@ unset LS_COLORS
 ## custom phase
 if [ -z ${ZSH_THEME} ]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
-  source "$HOME/.dotfiles/zsh/purepower-theme"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+  [[ ! -z $DOTFILES ]] && source $DOTFILES/.p10k.zsh
+#  source "$HOME/.dotfiles/zsh/purepower-theme"
 fi
 
 # Set list of themes to pick from when loading at random
@@ -66,15 +69,15 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 if [[ $(uname -s) == "Darwin"* ]]; then
   plugins=(
-    git colored-man colorize pip python brew osx tmux zsh-autosuggestions zsh-syntax-highlighting 
+    git colored-man-pages colorize pip python brew osx tmux zsh-autosuggestions zsh-syntax-highlighting 
   )
-elif [ -x $(command -v tmux) ]; then
+elif [ ! -x $(command -v tmux) ] | [ -n $NO_TMUX ]; then
   plugins=(
-    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
+    colored-man-pages colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting 
   )
 else
   plugins=(
-    colored-man colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting 
+    colored-man-pages colorize pip python zsh-syntax-highlighting zsh-syntax-highlighting tmux
   )
 fi
   

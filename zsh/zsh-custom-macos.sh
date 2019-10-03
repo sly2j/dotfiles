@@ -7,7 +7,7 @@ ZSH_DISABLE_COMPFIX=true
 # don't execute PATH modifications for tmux 
 # (this will screw up module command)
 if [[ -z $TMUX ]]; then
-  export PATH=/Applications/MacVim.app/Contents/bin:$PATH
+  export PATH="/usr/local/opt/llvm/bin:/Applications/MacVim.app/Contents/bin:$PATH:/usr/local/texlive/2019/bin/x86_64-darwin/"
 fi # TMUX GUARD
 
 # ------------------------------------------------------------------------------

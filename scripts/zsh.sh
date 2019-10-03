@@ -2,6 +2,7 @@ if [[ $1 == "cleanup" ]]; then
   rm -rf $DOTFILES/.zshrc
   rm -rf $DOTFILES/.zsh-custom
   rm -rf $DOTFILES/.oh-my-zsh
+  rm -rf $DOTFILES/.p10k.zsh
   exit 0
 fi
 
@@ -19,6 +20,9 @@ ln -s $SOURCE_DIR/zsh/zsh-custom-${MACHINE}.sh $DOTFILES/.zsh-custom
 
 echo ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
 ln -s $SOURCE_DIR/zsh/oh-my-zsh $DOTFILES/.oh-my-zsh
+
+echo ln -s $SOURCE_DIR/zsh/p10k.zsh $DOTFILES/.p10k.zsh
+ln -s $SOURCE_DIR/zsh/p10k.zsh $DOTFILES/.p10k.zsh
 
 if [ ${MACHINE} = "cdaq" ] || [ ${MACHINE} = "jlab" ]; then
   echo ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
