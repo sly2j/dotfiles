@@ -3,6 +3,7 @@ if [ -f /group/jpsi-007/local/setup.sh ]; then
   module use /group/c-csv/local/etc/modulefiles
   module use /group/jpsi-007/local/modulefiles
   module use $HOME/vcs2019/local/etc/modulefiles
+  module load zsh/latest
   module load tmux/latest
   module load python3/latest
   module load vim/latest
