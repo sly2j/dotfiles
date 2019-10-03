@@ -21,7 +21,7 @@ fi
 ## special known systems
 if [ ${MACHINE} = "linux" ]; then
   case "${HOSTNAME}" in
-    *phy.anl*)
+    *agave* | *eic0* | *phy.anl*)
       MACHINE=phy
       ;;
     *lcrc* | *bebop*)
