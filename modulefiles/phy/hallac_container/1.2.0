@@ -9,6 +9,6 @@ module-whatis   "hallac_container 1.2.0"
 
 # for Tcl script use only
 set    version        4.1.4
-set iprefix /home/ANL/sjoosten/.local/opt/hallac_container_1.2.0
+set iprefix $env(HOME)/.local/opt/hallac_container_1.2.0
 
 prepend-path    PATH             $iprefix/bin
