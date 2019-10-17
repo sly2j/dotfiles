@@ -3,13 +3,13 @@
 ## for vim
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for vim 8.1.2022"
+    puts stderr "This module sets up the environment for vim 8.1"
 }
-module-whatis   "vim 8.1.2022"
+module-whatis   "vim 8.1"
 
 # for Tcl script use only
 set    version        4.1.4
-set iprefix /home/anl/sjoosten/.local/opt/vim_8.1.2022
+set iprefix $env(HOME)/.local/opt/vim_8.1
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin

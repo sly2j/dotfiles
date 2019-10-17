@@ -1,15 +1,15 @@
 #%Module1.0#####################################################################
 ##
-## for tmux
+## for vim
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for tmux 2.8"
+    puts stderr "This module sets up the environment for cmake 3.15"
 }
-module-whatis   "tmux 2.8"
+module-whatis   "cmake 3.15"
 
 # for Tcl script use only
 set    version        4.1.4
-set iprefix $env(HOME)/.local/opt/tmux_2.8
+set iprefix $env(HOME)/.local/opt/cmake_3.15
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin
