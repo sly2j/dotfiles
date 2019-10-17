@@ -1,4 +1,5 @@
 module use "$HOME/.dotfiles/modulefiles/lcrc"
+module use "/lcrc/project/jlab/local/etc/modulefiles"
 
 module load singularity/3.0.2
 module load tmux
