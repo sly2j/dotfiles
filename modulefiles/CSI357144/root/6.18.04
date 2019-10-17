@@ -1,0 +1,27 @@
+#%Module1.0#####################################################################
+##
+## for ROOT
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for ROOT 6.18.04"
+}
+module-whatis   "ROOT 6.18.04"
+
+# for Tcl script use only
+set     version      3.2.8
+
+# for Tcl script use only
+set	version		4.1.4
+set iprefix /usr/local/Cellar/root/6.18.04
+
+setenv          MODULESHOME      $iprefix
+setenv          ROOTSYS          $iprefix
+prepend-path    PATH             $iprefix/bin
+prepend-path    MANPATH          $iprefix/share/man
+prepend-path    LD_LIBRARY_PATH  $iprefix/lib/root
+prepend-path    DYLD_LIBRARY_PATH  $iprefix/lib/root
+prepend-path    PYTHONPATH       $iprefix
+prepend-path    PYTHONPATH       $iprefix/lib/root
+prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
+
+module load     python3/3.7.4
