@@ -1,0 +1,16 @@
+name: work
+channels: 
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.7
+  - numpy
+  - scipy
+  - keras
+  - pytorch
+  - tensorflow
+  - jupyter
+  - matplotlib
+  - root
+  - uproot
+  - flask
