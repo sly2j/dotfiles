@@ -199,21 +199,21 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 # Fix display environment for tmux (preexec: runs before every command)
 # ------------------------------------------------------------------------------
 # Only if we have a display!
-if [ ! -z $DISPLAY ]; then
-  if [ -n "$TMUX" ]; then
-    if [ -z ${TMUX_CMD} ]; then
-      export TMUX_CMD=tmux
-    fi
-    function refresh {
-      export $(${TMUX_CMD} show-environment | grep "^DISPLAY")
-    }
-  else
-    function refresh { }
-  fi
-  function preexec {
-    refresh
-  }
-fi
+#if [ ! -z $DISPLAY ]; then
+#  if [ -n "$TMUX" ]; then
+#    if [ -z ${TMUX_CMD} ]; then
+#      export TMUX_CMD=tmux
+#    fi
+#    function refresh {
+#      export $(${TMUX_CMD} show-environment | grep "^DISPLAY")
+#    }
+#  else
+#    function refresh { }
+#  fi
+#  function preexec {
+#    refresh
+#  }
+#fi
 
 # ------------------------------------------------------------------------------
 # FUNCTIONS
