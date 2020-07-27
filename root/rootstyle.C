@@ -25,13 +25,13 @@ void set_style() {
   s->SetPadLeftMargin(0.12);
 
   // set title offsets (for axis label)
-  s->SetTitleXOffset(1.4);
+  s->SetTitleXOffset(1.3);
   s->SetTitleYOffset(1.1);
 
   // use large fonts
   // Int_t font=72; // Helvetica italics
-  Int_t font = 42; // Helvetica
-  Double_t tsize = 0.05;
+  Int_t font = 43; // Helvetica
+  Double_t tsize = 26;
   s->SetTextFont(font);
 
   s->SetTextSize(tsize);

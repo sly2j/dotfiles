@@ -1,13 +1,19 @@
 {
   gROOT->ProcessLine(".L ~/.rootstyle.C");
-  gROOT->ProcessLine(".include /Users/sjoosten/.local/opt/json_3.6.1/include");
-  gROOT->ProcessLine(".include /Users/sjoosten/.local/opt/fmt_5.3.0/include");
-  R__LOAD_LIBRARY(/Users/sjoosten/.local/opt/fmt_5.3.0/lib/libfmt.dylib);
+  //  gROOT->ProcessLine(".include
+  //  /Users/sjoosten/.local/opt/json_3.7.3/include");
+  //  gROOT->ProcessLine(".include
+  //  /Users/sjoosten/.local/opt/fmt_6.1.2/include");
+  // R__LOAD_LIBRARY(/Users/sjoosten/.local/opt/fmt_6.1.2/lib/libfmt.dylib);
+  R__LOAD_LIBRARY(libfmt);
+  gROOT->ProcessLine(".include "
+                     "/Users/sjoosten/.local/opt/spack/var/spack/environments/"
+                     "work/.spack-env/view/include/");
 
   gSystem->Load("libTree");
   gSystem->Load("libTreePlayer");
   gSystem->Load("libHist");
-//  gSystem->Load("libGenVector");
+  //  gSystem->Load("libGenVector");
   gSystem->SetBuildDir("$HOME/.root_build_dir");
   set_style();
 }
