@@ -1,0 +1,14 @@
+#%Module1.0#####################################################################
+##
+## for tmux
+##
+proc ModulesHelp { } {
+    puts stderr "This module sets up the environment for the Hall A/C container"
+}
+module-whatis   "hallac_container 1.2.0"
+
+# for Tcl script use only
+set    version        4.1.4
+set iprefix /Users/sjoosten/.local/opt/hallac_container_1.2.0
+
+prepend-path    PATH             $iprefix/bin

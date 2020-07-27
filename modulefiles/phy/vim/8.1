@@ -1,18 +1,15 @@
 #%Module1.0#####################################################################
 ##
-## for pcsim
+## for vim
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for simc (stable 1.0.0 release)"
+    puts stderr "This module sets up the environment for vim 8.1"
 }
-module-whatis   "Simc 1.0.0"
+module-whatis   "vim 8.1"
 
 # for Tcl script use only
-set     version      3.2.8
-
-# for Tcl script use only
-set	version		4.1.4
-set iprefix /Users/sjoosten/.local/opt/simc_1.0.0
+set    version        4.1.4
+set iprefix $env(HOME)/.local/opt/vim_8.1
 
 setenv          MODULESHOME      $iprefix
 prepend-path    PATH             $iprefix/bin
@@ -26,4 +23,3 @@ prepend-path    PYTHONPATH       $iprefix/lib
 prepend-path    PYTHONPATH       $iprefix/lib64
 prepend-path    PKG_CONFIG_PATH  $iprefix/share/pkgconfig
 
-module load     root

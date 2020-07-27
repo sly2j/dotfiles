@@ -3,16 +3,16 @@
 ## for LLVM
 ##
 proc ModulesHelp { } {
-    puts stderr "This module sets up the environment for LLVM 8.0.0"
+    puts stderr "This module sets up the environment for LLVM 9.0.1"
 }
-module-whatis   "LLVM 8.0.0"
+module-whatis   "LLVM 9.0.1"
 
 # for Tcl script use only
 set     version      3.2.8
 
 # for Tcl script use only
 set	version		4.1.4
-set iprefix /usr/local/Cellar/llvm/8.0.0
+set iprefix /usr/local/Cellar/llvm/9.0.1
 
 setenv          MODULESHOME      $iprefix
 setenv          CC               $iprefix/bin/clang
