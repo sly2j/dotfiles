@@ -44,7 +44,7 @@ def jpsi_layout(session, workdir):
     pc = split_window(session, 'Pc', workdir('Analysis/Sensitivity'))
 
     ## Simulation
-    sim = split_window(session, 'Simulation', workdir('Simulation'))
+    sim = split_window(session, 'Simulation', workdir('Analysis/Simulation'))
 
     ## Replay
     replay = window(session, 'Replay', workdir('Replay'))
