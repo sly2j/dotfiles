@@ -32,7 +32,7 @@ def split_window(session, name, workdir):
             window_name=name,
             start_directory=workdir,
             attach=False)
-    win.split_window(attach=False, vertical=False)
+    win.split_window(attach=False, vertical=False, start_directory=workdir)
     return win
 
 def jpsi_layout(session, workdir):
