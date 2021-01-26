@@ -17,9 +17,8 @@ fi # TMUX GUARD
 #
 # In case of tmux, this screws up the manpath, so lets save try to defend against that
 #MANPATH_SAVE=$MANPATH
-#source /usr/local/opt/modules/init/zsh
-
-#module use $HOME/.dotfiles/modulefiles/CSI357144
+source /usr/local/opt/modules/init/zsh
+module use $HOME/.local/etc/modulefiles
 
 ## fix manpath for tmux
 #if [[ $TMUX ]]; then
@@ -54,19 +53,22 @@ function workon() {
     'Error: no project name givem'
     exit 1
   elif [ "$1" = "jpsi" ]; then
-    cd $HOME/work/Jpsi-007
-    module purge
-    module load env/jpsi-007/pro
+    ## ensure tmux alive
+    tmux new-session -d -s dummy
+    ## attach to tmux, populate if needed
+    python ~/.dotfiles/tmux/spawntmux-macos.py jpsi
   else
     echo "Error: unknown project name: $1"
     exit 1
   fi
 }
 
-alias eic_dev="docker-compose -f ~/.docker-compose.yml run --rm eic bash"
-alias lager_dev="docker-compose -f ~/.docker-compose.yml run --rm lager bash"
-alias escalate="docker-compose -f ~/.docker-compose.yml run --rm escalate bash"
+alias eic-shell="docker-compose -f ~/.docker-compose.yml run --rm eic eic-shell"
+alias yr-shell="docker-compose -f ~/.docker-compose.yml run --rm yr eic-shell"
+alias lager-shell="docker-compose -f ~/.docker-compose.yml run --rm lager bash"
+alias hcana_shell="docker-compose -f ~/.docker-compose.yml run --rm hcana bash"
 alias less="less -R"
+
 
 alias spack_dev="docker-compose -f ~/.docker-compose.yml run --rm spack bash"
 
@@ -79,3 +81,4 @@ export PATH=/Users/sjoosten/Library/Python/3.7/bin:$PATH
 # use highlight with less
 export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --force"
 [[ -s "/usr/local/etc/grc.zsh" ]] && source /usr/local/etc/grc.zsh
+
