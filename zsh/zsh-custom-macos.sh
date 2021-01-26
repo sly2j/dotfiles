@@ -66,7 +66,7 @@ function workon() {
 alias eic-shell="docker-compose -f ~/.docker-compose.yml run --rm eic eic-shell"
 alias yr-shell="docker-compose -f ~/.docker-compose.yml run --rm yr eic-shell"
 alias lager-shell="docker-compose -f ~/.docker-compose.yml run --rm lager bash"
-alias hcana_shell="docker-compose -f ~/.docker-compose.yml run --rm hcana bash"
+alias hcana-shell="docker-compose -f ~/.docker-compose.yml run --rm hcana bash"
 alias less="less -R"
 
 

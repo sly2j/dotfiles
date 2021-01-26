@@ -46,6 +46,9 @@ def jpsi_layout(session, workdir):
     ## Simulation
     sim = split_window(session, 'Simulation', workdir('Analysis/Simulation'))
 
+    ## Data
+    data = window(session, 'Data', '/Volumes/ScratchViper0/Data/Jpsi-007')
+
     ## Replay
     replay = window(session, 'Replay', workdir('Replay'))
     replay.split_window(
