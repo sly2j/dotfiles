@@ -62,6 +62,6 @@ git submodule update --init --recursive
 
 echo "Executing main command: bash $SOURCE_DIR/scripts/${COMMAND}.sh ${@:2}"
 env MACHINE=${MACHINE} DOTFILES=${DOTFILES} SOURCE_DIR=${SOURCE_DIR} \
-  bash $SOURCE_DIR/scripts/${COMMAND}.sh ${@:2}
+  bash $SOURCE_DIR/scripts/${COMMAND}.sh ${@:2} || bash deploy.sh ${COMMAND} cleanup
 
 echo "All done!"

@@ -5,10 +5,9 @@
   //  gROOT->ProcessLine(".include
   //  /Users/sjoosten/.local/opt/fmt_6.1.2/include");
   // R__LOAD_LIBRARY(/Users/sjoosten/.local/opt/fmt_6.1.2/lib/libfmt.dylib);
-  R__LOAD_LIBRARY(libfmt);
+  // R__LOAD_LIBRARY(libfmt);
   gROOT->ProcessLine(".include "
-                     "/Users/sjoosten/.local/opt/spack/var/spack/environments/"
-                     "work/.spack-env/view/include/");
+                     "/opt/homebrew/include/root");
 
   gSystem->Load("libTree");
   gSystem->Load("libTreePlayer");

@@ -49,6 +49,10 @@ if [ ${MACHINE} = "cdaq" ] | [ ${MACHINE} = "alcf" ]; then
 else
   echo "BUILDING YouCompleteMe Plugin for machine ${MACHINE}"
   cd $DOTFILES/.vim/bundle/YouCompleteMe
-  ./install.py --clang-completer --system-boost
+  if [ ${MACHINE} = "macos" ]; then
+    /usr/bin/python3 ./install.py --all --clangd-completer
+   else
+    ./install.py --clang-completer --system-boost
+   fi
   cd -
 fi

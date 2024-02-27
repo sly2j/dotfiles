@@ -9,7 +9,7 @@ execute pathogen#helptags()
 " ------------------------------------------------------------------------------
 " Different background/color scheme for GUI and terminal mode
 if has('gui_running')
-    colorscheme solarized
+    colorscheme desert
     set background=dark
 else
     colorscheme badwolf
@@ -57,20 +57,22 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 " Show tabs and EOL characters
 set list
-set listchars=eol:¬,tab:▸.
+"set listchars=eol:¬,tab:▸.
+set listchars=tab:▸.
 
 let g:tex_flavor = "latex"             " TeX is LaTeX
 
 " Mac Vim font for retina display
-"set guifont=Menlo\ Regular:h12
-set guifont=Meslo\ Lg\ S\ Regular\ for\ Powerline:h14
+"set guifont=Menlo\ Regular:h16
+set guifont=MesloLGS\ NF:h16
+"set guifont=Meslo\ Lg\ S\ Regular\ for\ Powerline:h18
 
 " ------------------------------------------------------------------------------
 " clang-format
 " ------------------------------------------------------------------------------
 let g:clang_format#code_style = "llvm"
 let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format_on_insert_leave = 1
+let g:clang_format#auto_format_on_insert_leave = 0
 let g:clang_format#style_options = {
              \ "BreakConstructorInitializerBeforeComma" : "true",
              \ "ConstructorInitializerAllOnOneLineOrOnePerLine" : "true",
@@ -93,8 +95,11 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 " ------------------------------------------------------------------------------
 " YCM auto-complete
+
+let g:ycm_clangd_binary_path='/opt/homebrew/opt/llvm/bin/clangd'
 " ------------------------------------------------------------------------------
-let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 "let g:ycm_extra_conf_globlist = ["~/Dropbox/Work/Tools/LIGEN/*"]
 
 " for now no diagnostics as XCode catches up with C++17...
@@ -155,4 +160,3 @@ let g:cpp_simple_highlight = 1
 let g:cpp_named_requirements_highlight = 1
 
 let c_no_curly_error = 1
-
