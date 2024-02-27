@@ -20,6 +20,12 @@ echo "## Custom theme" >> ~/.zimrc
 echo "zmodule prompt-pwd" >> ~/.zimrc
 echo "zmodule minimal" >> ~/.zimrc
 
+echo "Setting up ssh keys"
+echo '' >> ~/.zshrc
+echo 'for key in `ls ~/.ssh/id_rsa* | grep -ve ".pub$"`; do' >> ~/.zshrc
+echo '  ssh-add $key' >> ~/.zshrc
+echo 'done' >> ~/.zshrc
+
 if [ ${MACHINE} = "cdaq" ] || [ ${MACHINE} = "jlab" ]; then
   echo ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
   ln -s $SOURCE_DIR/zsh/launch-zsh-${MACHINE}.sh $DOTFILES/.launch-zsh.sh
