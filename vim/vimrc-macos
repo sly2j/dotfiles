@@ -96,15 +96,14 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " ------------------------------------------------------------------------------
 " YCM auto-complete
 
-let g:ycm_clangd_binary_path='/opt/homebrew/opt/llvm/bin/clangd'
+"let g:ycm_clangd_binary_path='/opt/homebrew/opt/llvm/bin/clangd'
 " ------------------------------------------------------------------------------
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 "let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 "let g:ycm_extra_conf_globlist = ["~/Dropbox/Work/Tools/LIGEN/*"]
 
 " for now no diagnostics as XCode catches up with C++17...
-let g:ycm_enable_diagnostic_signs = 0 
-let g:ycm_enable_diagnostic_highlighting = 0
+"let g:ycm_enable_diagnostic_signs = 0 
+"let g:ycm_enable_diagnostic_highlighting = 0
 
 " ------------------------------------------------------------------------------
 " NERDTREE
