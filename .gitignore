@@ -1,0 +1,35 @@
+# Ignore OS/macOS artifacts
+.DS_Store
+*.swp
+*.swo
+
+# Ignore Python cache if using Python for any scripting
+__pycache__/
+*.pyc
+
+# Neovim local state
+nvim/.netrwhist
+nvim/undodir/
+nvim/site/
+nvim/lazy-lock.json  # Lockfile, optional to commit — remove if you want it tracked
+
+# Backup/undo/swap files (Neovim)
+*.un~
+*.bak
+*.tmp
+*.sw?
+
+# Tmux plugin directory (if cloned locally instead of via install.sh)
+tmux/plugins/
+
+# Machine-specific override files (add these if you create them)
+.local/
+*.local.lua
+
+# Install log or test artifacts (if created)
+install.log
+*.log
+*.test
+
+# Optional: exclude any symlinks back to dotfiles
+*.symlink
