@@ -6,3 +6,5 @@ alias kdestroy=/usr/bin/kdestroy
 alias kutil=/usr/bin/kutil
 
 git config --global credential.helper osxkeychain
+
+export PATH=/opt/homebrew/bin:$PATH

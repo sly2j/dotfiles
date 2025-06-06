@@ -42,17 +42,23 @@ if [ ! -d "${TPM_PATH}" ]; then
   echo "TPM not found. Cloning into ${TPM_PATH}..."
   git clone https://github.com/tmux-plugins/tpm "${TPM_PATH}"
   echo -e "  ${CHECKMARK} TPM installed"
-
-  # Initial plugin install
-  "${TPM_PATH}/bin/install_plugins"
-  echo -e "  ${CHECKMARK} Plugins installed"
 else
   echo "TPM already installed at ${TPM_PATH}"
+fi
 
-  # Optional: update plugins if TPM is already present
+# Only install/update plugins if running inside tmux
+if [ -n "${TMUX:-}" ]; then
+  echo "Running inside tmux session – installing plugins..."
+  "${TPM_PATH}/bin/install_plugins"
+  echo -e "  ${CHECKMARK} Plugins installed"
+
   "${TPM_PATH}/bin/update_plugins" all
   echo -e "  ${CHECKMARK} Plugins updated"
+else
+  echo "⚠️  Not in a tmux session. Skipping plugin install/update."
+  echo "ℹ️  Run this manually later inside tmux: <prefix> + I"
 fi
+
 
 echo "Done linking tmux config."
 
@@ -75,8 +81,12 @@ for item in $HOME/.zshrc $HOME/.zimrc $HOME/.zim $HOME/.zshenv .zprofile $ZIM_HO
     fi
 done
 
+# Link top-level dotfile
+ln -sf "$DOTFILES/zsh/.zshenv" "$HOME/.zshenv"
+echo -e "  ${CHECKMARK} Linked .zshenv"
+
 # Link dotfiles
-for file in $DOTFILES/zsh/{.zshenv,.zimrc,.zshrc} $DOTFILES/zsh/*.zsh; do
+for file in $DOTFILES/zsh/{.zimrc,.zshrc} $DOTFILES/zsh/*.zsh; do
   base=$(basename "$file")
   ln -sf "$file" "$ZSH_CONFDIR/$base"
   echo -e "  ${CHECKMARK} Linked $base"
@@ -102,7 +112,7 @@ if [ ! -d "$THEME_DIR" ]; then
   git clone --depth=1 https://github.com/catppuccin/zsh-syntax-highlighting.git "$THEME_DIR"
   echo -e "  ${CHECKMARK} Cloned Catppuccin syntax highlighting theme"
 else
-  echo "  ${CHECKMARK} Theme already exists at $THEME_DIR"
+  echo -e "  ${CHECKMARK} Theme already exists at $THEME_DIR"
 fi
 
 #######################################
@@ -120,3 +130,29 @@ fi
 mkdir -p "${CONFDIR}/starship"
 ln -sf "${DOTFILES}/zsh/starship.toml" "${CONFDIR}/starship/starship.toml"
 echo -e "  ${CHECKMARK} Linked starship.toml"
+
+#######################################
+# Optional: iTerm2 Color Theme Setup
+#######################################
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "🖥  Detected macOS — downloading iTerm2 Catppuccin theme..."
+
+  ITERM_THEME_DIR="$HOME/Downloads"
+  MOCHA_URL="https://raw.githubusercontent.com/catppuccin/iterm/refs/heads/main/colors/catppuccin-mocha.itermcolors"
+  MOCHA_FILE="${ITERM_THEME_DIR}/Catppuccin Mocha.itermcolors"
+
+  mkdir -p "$ITERM_THEME_DIR"
+  if [ ! -f "$MOCHA_FILE" ]; then
+    echo "⬇️  Downloading Catppuccin Mocha iTerm2 theme..."
+    curl -fsSL -o "$MOCHA_FILE" "$MOCHA_URL" && \
+      echo -e "  ${CHECKMARK} Theme downloaded to $MOCHA_FILE"
+  else
+    echo -e "  ${CHECKMARK} iTerm2 theme already exists"
+  fi
+
+  echo -e "\n🎨 To apply the iTerm2 theme:"
+  echo "  1. Open iTerm2 → Preferences → Profiles → Colors"
+  echo "  2. Click 'Color Presets…' → 'Import…'"
+  echo "  3. Select: $MOCHA_FILE"
+  echo "  4. Then select 'Catppuccin Mocha' from the presets menu."
+fi
