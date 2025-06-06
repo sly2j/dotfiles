@@ -1,0 +1,52 @@
+add_newline = false
+
+[character]
+success_symbol = "[λ](bold #a6e3a1)"   # green
+error_symbol = "[✗](bold #f38ba8)"    # red
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold #89b4fa"                # blue
+
+[git_branch]
+symbol = " "
+style = "bold #cba6f7"                # mauve
+
+[git_status]
+style = "#f9e2af"                     # yellow
+
+[cmd_duration]
+min_time = 1000
+format = "took [$duration]($style)"
+style = "bold #fab387"               # peach
+
+[time]
+disabled = false
+format = "🕒 [$time]($style)"
+style = "#9399b2"                    # subtext1
+time_format = "%R"
+
+[username]
+show_always = false
+style_user = "bold #94e2d5"          # teal
+
+[hostname]
+ssh_only = true
+style = "bold #9399b2"
+
+[python]
+symbol = "🐍 "
+style = "#a6e3a1"                    # green
+
+[nodejs]
+symbol = " "
+style = "#a6e3a1"
+
+[rust]
+symbol = "🦀 "
+style = "#fab387"
+
+[package]
+disabled = true
+

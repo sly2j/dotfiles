@@ -55,3 +55,68 @@ else
 fi
 
 echo "Done linking tmux config."
+
+#######################################
+# Setup zsh
+#######################################
+ZSH_CONFDIR="${CONFDIR}/zsh"
+ZIM_HOME="${ZSH_CONFDIR}/zim"
+BACKUP_DIR="${ZSH_CONFDIR}/old-zsh-backup/$(date +%Y%m%d-%H%M%S)"
+echo "Setting up zsh configuration in $ZSH_CONFDIR"
+
+# Create config directory
+mkdir -p "$ZSH_CONFDIR"
+
+for item in $HOME/.zshrc $HOME/.zimrc $HOME/.zim $HOME/.zshenv .zprofile $ZIM_HOME; do
+    if [ -e $item ]; then
+        echo "📦 Found existing $item. Backing up to $BACKUP_DIR"
+        mkdir -p "$BACKUP_DIR"
+        mv "$item" "$BACKUP_DIR/"
+    fi
+done
+
+# Link dotfiles
+for file in $DOTFILES/zsh/{.zshenv,.zimrc,.zshrc} $DOTFILES/zsh/*.zsh; do
+  base=$(basename "$file")
+  ln -sf "$file" "$ZSH_CONFDIR/$base"
+  echo -e "  ${CHECKMARK} Linked $base"
+done
+
+# Install zimfw to $ZIM_HOME
+if [ ! -e "$ZIM_HOME/zimfw.zsh" ]; then
+  echo "⬇️  Installing zimfw to ${ZIM_HOME}..."
+  mkdir -p "$ZIM_HOME"
+  curl -fsSL -o "$ZIM_HOME/zimfw.zsh" \
+    https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+echo -e "${CHECKMARK} Zsh setup complete."
+
+#######################################
+# Setup Zsh extras: Syntax Highlighting & Starship prompt
+#######################################
+
+echo "Installing Catppuccin zsh-syntax-highlighting theme..."
+THEME_DIR="${ZSH_CONFDIR}/catppuccin-zsh-syntax-highlighting"
+if [ ! -d "$THEME_DIR" ]; then
+  git clone --depth=1 https://github.com/catppuccin/zsh-syntax-highlighting.git "$THEME_DIR"
+  echo -e "  ${CHECKMARK} Cloned Catppuccin syntax highlighting theme"
+else
+  echo "  ${CHECKMARK} Theme already exists at $THEME_DIR"
+fi
+
+#######################################
+# Install Starship prompt binary
+#######################################
+if ! command -v starship >/dev/null 2>&1; then
+  echo "⬇️  Installing Starship prompt..."
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+  echo -e "  ${CHECKMARK} Starship installed"
+else
+  echo -e "  ${CHECKMARK} Starship already installed"
+fi
+
+# Link Starship config
+mkdir -p "${CONFDIR}/starship"
+ln -sf "${DOTFILES}/zsh/starship.toml" "${CONFDIR}/starship/starship.toml"
+echo -e "  ${CHECKMARK} Linked starship.toml"
