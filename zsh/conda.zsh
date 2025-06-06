@@ -1,6 +1,6 @@
 export CONDA_ROOT=
-if [ -d "$HOME/Software/opt/miniforge3:$PATH" ]; then
-    export CONDA_ROOT=$HOME/Software/opt/miniforge3/bin/
+if [ -d "$HOME/Software/opt/miniforge3" ]; then
+    export CONDA_ROOT=$HOME/Software/opt/miniforge3/
 fi
 if [ -z $CONDA_ROOT ]; then
     return 0
@@ -28,7 +28,7 @@ function workon {
     *) echo "ERROR: Unknown environment: $1" && return 1 ;;
   esac
   if [ -z $request ]; then
-      echo "ERROR: Environment not found on this system: $1" && return 1 ;;
+      echo "ERROR: Environment not found on this system: $1" && return 1
   elif [ "$request" = "base" ]; then
       conda activate base
   else
@@ -40,3 +40,6 @@ function workon {
     done
   fi
 }
+
+# Disable conda's prompt change (spaceship already does this)
+export CONDA_CHANGEPS1=false
