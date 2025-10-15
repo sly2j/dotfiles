@@ -14,13 +14,24 @@ CHECKMARK="\033[0;32m✓\033[0m"
 export NVIM_DIR="${CONFDIR}/nvim"
 echo "Linking Neovim config from ${DOTFILES}/nvim to ${NVIM_DIR}"
 
+# If NVIM_DIR is a symlink to the repo, remove it to avoid circular links
+if [ -L "${NVIM_DIR}" ] && [ "$(readlink "${NVIM_DIR}")" = "${DOTFILES}/nvim" ]; then
+  echo "Fixing circular link: ${NVIM_DIR} points to ${DOTFILES}/nvim"
+  rm -f "${NVIM_DIR}"
+fi
+
 # Ensure config directory exists
 mkdir -p "${NVIM_DIR}"
 
 # Link Neovim config files
 ln -sf "${DOTFILES}/nvim/init.lua" "${NVIM_DIR}/init.lua"
 echo -e "  ${CHECKMARK} Linked init.lua"
-ln -sf "${DOTFILES}/nvim/lua" "${NVIM_DIR}/lua"
+# Link the lua/ directory
+# Remove an existing bad self-link first
+if [ -L "${NVIM_DIR}/lua" ] && [ "$(readlink "${NVIM_DIR}/lua")" = "${DOTFILES}/nvim/lua" ]; then
+  rm -f "${NVIM_DIR}/lua"
+fi
+ln -sfn "${DOTFILES}/nvim/lua" "${NVIM_DIR}/lua"
 echo -e "  ${CHECKMARK} Linked lua/ directory"
 
 echo "Done linking Neovim config."
