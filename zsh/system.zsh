@@ -7,4 +7,5 @@ alias kutil=/usr/bin/kutil
 
 git config --global credential.helper osxkeychain
 
+#export PATH=/usr/local/texlive/2025basic/bin/universal-darwin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
