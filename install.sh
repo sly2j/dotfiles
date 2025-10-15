@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Set dotfiles path
-export DOTFILES="${HOME}/.dotfiles2"
+export DOTFILES="${HOME}/.dotfiles"
 export CONFDIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 
@@ -156,3 +156,36 @@ if [[ "$(uname)" == "Darwin" ]]; then
   echo "  3. Select: $MOCHA_FILE"
   echo "  4. Then select 'Catppuccin Mocha' from the presets menu."
 fi
+
+#######################################
+# ROOT (CERN) analysis environment
+#######################################
+ROOT_DIR="${CONFDIR}/root"
+echo "Linking ROOT config from ${DOTFILES}/root to ${ROOT_DIR}"
+
+# Backup any existing files
+BACKUP_DIR="${ROOT_DIR}/old-root-backup/$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$ROOT_DIR"
+for item in "$HOME/.rootlogon.C" "$HOME/.rootstyle.C" \
+            "$ROOT_DIR/rootlogon.C" "$ROOT_DIR/rootstyle.C"; do
+  if [ -e "$item" ] || [ -L "$item" ]; then
+    echo "📦 Found existing $item. Backing up to $BACKUP_DIR"
+    mkdir -p "$BACKUP_DIR"
+    mv "$item" "$BACKUP_DIR/"
+  fi
+done
+
+# Install actual files to ~/.config/root
+ln -sf "${DOTFILES}/root/rootlogon.C" "${ROOT_DIR}/rootlogon.C"
+echo -e "  ${CHECKMARK} Linked rootlogon.C → ${ROOT_DIR}/rootlogon.C"
+ln -sf "${DOTFILES}/root/rootstyle.C" "${ROOT_DIR}/rootstyle.C"
+echo -e "  ${CHECKMARK} Linked rootstyle.C → ${ROOT_DIR}/rootstyle.C"
+
+# Symlink top-level dotfiles under $HOME
+ln -sf "${ROOT_DIR}/rootlogon.C" "${HOME}/.rootlogon.C"
+echo -e "  ${CHECKMARK} Linked ${HOME}/.rootlogon.C"
+ln -sf "${ROOT_DIR}/rootstyle.C" "${HOME}/.rootstyle.C"
+echo -e "  ${CHECKMARK} Linked ${HOME}/.rootstyle.C"
+
+echo -e "${CHECKMARK} ROOT environment linked."
+
