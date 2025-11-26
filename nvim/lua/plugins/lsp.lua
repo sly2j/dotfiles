@@ -1,5 +1,4 @@
 -- Core LSP and completion capabilities setup
-local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- ^ Enables LSP servers to support advanced completion features provided by nvim-cmp
 
@@ -42,18 +41,16 @@ require("mason-tool-installer").setup {
 }
 
 -- clangd setup: C/C++ language server with background indexing and clang-tidy enabled
-lspconfig.clangd.setup {
+vim.lsp.config("clangd", {
   cmd = { "clangd", "--background-index", "--clang-tidy" },
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
 -- pyright setup: Python LSP
-lspconfig.pyright.setup({
+vim.lsp.config("pyright", {
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
   settings = {
     python = {
       analysis = {
@@ -68,11 +65,12 @@ lspconfig.pyright.setup({
 })
 
 -- cmake-language-server setup
-lspconfig.cmake.setup {
+vim.lsp.config("cmake", {
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("CMakeLists.txt", ".git"),
-}
+})
+
+vim.lsp.enable({"clangd", "pyright", "cmake"})
 
 -- Autocompletion setup (nvim-cmp + LuaSnip)
 local cmp = require("cmp")
