@@ -1,6 +1,8 @@
 export CONDA_ROOT=
 if [ -d "$HOME/Software/opt/miniforge3" ]; then
     export CONDA_ROOT=$HOME/Software/opt/miniforge3/
+elif [ -d "/opt/miniforge3" ]; then
+    export CONDA_ROOT=/opt/miniforge3
 fi
 if [ -z $CONDA_ROOT ]; then
     return 0
