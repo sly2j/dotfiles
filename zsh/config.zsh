@@ -116,8 +116,9 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
 # SSH key loading
-for key in $HOME/.ssh/id_rsa*.pub; do
-   ssh-add "$key" 2>/dev/null
+for key in "$HOME"/.ssh/id_rsa*(N); do
+  [[ "$key" == *.pub ]] && continue
+  ssh-add "$key" 2>/dev/null
 done
 
 # load Starship prompt if available

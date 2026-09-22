@@ -1,11 +1,13 @@
-## Use system Kerberos on MacOS
-alias kinit=/usr/bin/kinit
-alias kpasswd=/usr/bin/kpasswd
-alias klist=/usr/bin/klist
-alias kdestroy=/usr/bin/kdestroy
-alias kutil=/usr/bin/kutil
+if [[ "$(uname)" == "Darwin" ]]; then
+  ## Use system Kerberos on MacOS
+  alias kinit=/usr/bin/kinit
+  alias kpasswd=/usr/bin/kpasswd
+  alias klist=/usr/bin/klist
+  alias kdestroy=/usr/bin/kdestroy
+  alias kutil=/usr/bin/kutil
 
-git config --global credential.helper osxkeychain
+  git config --global credential.helper osxkeychain
 
-#export PATH=/usr/local/texlive/2025basic/bin/universal-darwin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
+  #export PATH=/usr/local/texlive/2025basic/bin/universal-darwin:$PATH
+  export PATH=/opt/homebrew/bin:$PATH
+fi

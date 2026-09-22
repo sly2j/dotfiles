@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Set dotfiles path
-export DOTFILES="${HOME}/.dotfiles"
+export DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export CONFDIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 
