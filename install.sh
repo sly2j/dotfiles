@@ -33,6 +33,8 @@ if [ -L "${NVIM_DIR}/lua" ] && [ "$(readlink "${NVIM_DIR}/lua")" = "${DOTFILES}/
 fi
 ln -sfn "${DOTFILES}/nvim/lua" "${NVIM_DIR}/lua"
 echo -e "  ${CHECKMARK} Linked lua/ directory"
+ln -sf "${DOTFILES}/nvim/lazy-lock.json" "${NVIM_DIR}/lazy-lock.json"
+echo -e "  ${CHECKMARK} Linked lazy-lock.json"
 
 echo "Done linking Neovim config."
 
