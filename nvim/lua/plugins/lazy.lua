@@ -76,12 +76,13 @@ require("lazy").setup({
   -- Tree-sitter: Modern, fast, and extensible syntax parser and highlighter
   {
     "nvim-treesitter/nvim-treesitter",
+    tag = "v0.10.0",
     build = ":TSUpdate",  -- Always keep parsers up to date
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c", "cpp", "python", "lua", "bash", "json", "yaml", "cmake", "markdown",
-          "fortran", "toml", "java" -- Additional languages you requested
+          "fortran", "toml", "java", "vimdoc" -- Additional languages you requested
         },
 
         -- Enable Tree-sitter-based syntax highlighting
