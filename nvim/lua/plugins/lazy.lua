@@ -146,10 +146,10 @@ require("lazy").setup({
     end,
   },
   -- LSP Core Components
-  { "williamboman/mason.nvim", version = "v1.10.0", build = ":MasonUpdate" },
+  { "williamboman/mason.nvim", tag = "v2.3.1" },
   {
     "williamboman/mason-lspconfig.nvim",
-    version = "v1.29.0",
+    tag = "v2.3.0",
     dependencies = { "williamboman/mason.nvim" }
   },
   { "neovim/nvim-lspconfig" },
