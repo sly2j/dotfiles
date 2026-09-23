@@ -7,6 +7,8 @@ setopt HIST_IGNORE_ALL_DUPS
 #
 # Input/output
 #
+export EDITOR=nvim
+export VISUAL=nvim
 #
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
