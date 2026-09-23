@@ -11,10 +11,10 @@ zmodule git-info
 
 # Completion
 zmodule zsh-users/zsh-completions --fpath src
-zmodule completion
 
 # Extras
 #zmodule zsh-users/zsh-syntax-highlighting
 zmodule catppuccin/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
+zmodule completion
