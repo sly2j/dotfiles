@@ -8,7 +8,6 @@ zmodule utility
 # Prompt
 zmodule duration-info
 zmodule git-info
-zmodule joke/zim-starship
 
 # Completion
 zmodule zsh-users/zsh-completions --fpath src
