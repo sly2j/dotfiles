@@ -23,13 +23,7 @@ require("lazy").setup({
   -- Note: Telescope requires ripgrep to be installed, e.g. `brew install ripgrep` on MacOS
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-      }
-    }
+    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   -- File file tree
   {

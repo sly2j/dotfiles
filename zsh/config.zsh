@@ -79,6 +79,11 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
 
+# Catppuccin theme, must be sourced before zsh-syntax-highlighting is loaded
+_catppuccin_zsh_theme=${ZDOTDIR}/catppuccin-zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+[[ -r ${_catppuccin_zsh_theme} ]] && source ${_catppuccin_zsh_theme}
+unset _catppuccin_zsh_theme
+
 # ------------------
 # Initialize modules
 # ------------------

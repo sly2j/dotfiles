@@ -22,22 +22,32 @@ vim.diagnostic.config({
 local on_attach = function(client, bufnr)
   -- Enable inlay hints (e.g., parameter names) if supported
   if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
+end
+
+-- Mason has no clangd build for Linux arm64; use the system clangd there instead
+-- (e.g. `apt install clangd`). vim.lsp falls back to clangd on PATH.
+local uname = vim.uv.os_uname()
+local mason_has_clangd = not (uname.sysname == "Linux" and uname.machine == "aarch64")
+
+local mason_lsps = { "pyright", "cmake" }
+if mason_has_clangd then
+  table.insert(mason_lsps, 1, "clangd")
 end
 
 -- Install and configure LSP servers via Mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "pyright", "cmake" }, -- Automatically install these
+  ensure_installed = mason_lsps, -- Automatically install these
 })
 
 -- Optionally ensure related CLI tools (formatters, linters) are installed
 require("mason-tool-installer").setup {
-  ensure_installed = {
-    "clangd", "pyright", "cmake", -- LSPs
-    "clang-format", "black", "mypy" -- Formatter/linter support
-  }
+  ensure_installed = vim.list_extend(
+    vim.deepcopy(mason_lsps),                -- LSPs
+    { "clang-format", "black", "mypy" }      -- Formatter/linter support
+  )
 }
 
 -- clangd setup: C/C++ language server with background indexing and clang-tidy enabled

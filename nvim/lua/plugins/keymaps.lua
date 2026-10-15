@@ -30,8 +30,8 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
 -- Only works in Neovim 0.10+ (or patched 0.9) with a compatible LSP
 vim.keymap.set("n", "<leader>ih", function()
   local bufnr = vim.api.nvim_get_current_buf()
-  local enabled = vim.lsp.inlay_hint.is_enabled(bufnr)
-  vim.lsp.inlay_hint.enable(bufnr, not enabled)
+  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+  vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
 end, { desc = "Toggle Inlay Hints" })
 
 -- LSP Navigation

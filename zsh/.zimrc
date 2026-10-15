@@ -12,9 +12,10 @@ zmodule git-info
 # Completion
 zmodule zsh-users/zsh-completions --fpath src
 
-# Extras
-#zmodule zsh-users/zsh-syntax-highlighting
-zmodule catppuccin/zsh-syntax-highlighting
+# Completion must be initialized before the modules below
+zmodule completion
+
+# Extras (catppuccin theme is sourced from config.zsh before init)
+zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
-zmodule completion
