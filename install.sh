@@ -86,7 +86,7 @@ echo "Setting up zsh configuration in $ZSH_CONFDIR"
 # Create config directory
 mkdir -p "$ZSH_CONFDIR"
 
-for item in $HOME/.zshrc $HOME/.zimrc $HOME/.zim $HOME/.zshenv .zprofile $ZIM_HOME; do
+for item in $HOME/.zshrc $HOME/.zimrc $HOME/.zim $HOME/.zshenv $HOME/.zprofile $ZIM_HOME; do
     if [ -e $item ]; then
         echo "📦 Found existing $item. Backing up to $BACKUP_DIR"
         mkdir -p "$BACKUP_DIR"
